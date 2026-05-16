@@ -1,0 +1,123 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/soft_pink">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="70dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+                <ImageView
+                    android:id="@+id/ivMenu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_menu" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="selamat datang"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-medium" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Halo Bunda, Prans"
+                android:fontFamily="sans-serif-black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Informasi Agenda"
+                android:fontFamily="sans-serif-medium" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:backgroundTint="@color/white">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tanggal: 20 Mei 2026" android:textColor="@color/gray_text" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IMUNISASI RUTIN POSYANDU" android:fontFamily="sans-serif-black" android:layout_marginTop="4dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lokasi: Balai Desa Banjarmasin" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:columnCount="2"
+                android:alignmentMode="alignMargins">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardGizi"
+                    style="@style/SibundaMenuCard">
+                    <TextView style="@style/SibundaMenuText" android:text="Cek Gizi Balita" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardMonitoring"
+                    style="@style/SibundaMenuCard">
+                    <TextView style="@style/SibundaMenuText" android:text="Kelola Pertumbuhan" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardKonsultasi"
+                    style="@style/SibundaMenuCard">
+                    <TextView style="@style/SibundaMenuText" android:text="Konsultasi Ahli Gizi" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView style="@style/SibundaMenuCard">
+                    <TextView style="@style/SibundaMenuText" android:text="Materi Edukasi" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView style="@style/SibundaMenuCard">
+                    <TextView style="@style/SibundaMenuText" android:text="Monitoring Pola Makan" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView style="@style/SibundaMenuCard">
+                    <TextView style="@style/SibundaMenuText" android:text="Agenda Posyandu" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </GridLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        app:itemIconTint="@color/rose_pink"
+        app:itemTextColor="@color/rose_pink"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

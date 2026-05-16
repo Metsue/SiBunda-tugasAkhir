@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SiBunda" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryContainer">@color/primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <item name="colorSecondaryContainer">@color/secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/onSurface</item>
+    </style>
+
+    <style name="Theme.SiBunda" parent="Base.Theme.SiBunda" />
+
+    <style name="ShapeAppearance.SiBunda.LargeComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+
+    <style name="SibundaMenuCard">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
+    <style name="SibundaMenuText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

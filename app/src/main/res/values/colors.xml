@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- SiBunda Palette -->
+    <color name="soft_pink">#FFD6E7</color>
+    <color name="pastel_pink">#FFC2D9</color>
+    <color name="rose_pink">#F48FB1</color>
+    <color name="soft_gray">#F5F5F5</color>
+    <color name="light_blue">#7BB8FF</color>
+    <color name="gray_text">#757575</color>
+
+    <color name="primary">#F48FB1</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="primaryContainer">#FFD6E7</color>
+    <color name="onPrimaryContainer">#3B001A</color>
+
+    <color name="secondary">#7BB8FF</color>
+    <color name="onSecondary">#FFFFFF</color>
+    <color name="secondaryContainer">#D1E4FF</color>
+    <color name="onSecondaryContainer">#001D36</color>
+
+    <color name="surface">#FFFBFD</color>
+    <color name="onSurface">#1F1A1C</color>
+    <color name="surfaceVariant">#F2DDE2</color>
+    <color name="onSurfaceVariant">#514347</color>
+
+    <color name="background">#FFFBFD</color>
+    <color name="onBackground">#1F1A1C</color>
+
+    <color name="outline">#837377</color>
+</resources>
