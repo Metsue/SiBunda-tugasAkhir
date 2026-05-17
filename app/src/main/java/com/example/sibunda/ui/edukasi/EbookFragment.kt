@@ -1,4 +1,4 @@
-package com.example.sibunda.ui.ebook
+package com.example.sibunda.ui.edukasi
 
 import android.content.Intent
 import android.net.Uri

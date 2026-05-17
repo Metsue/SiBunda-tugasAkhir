@@ -19,19 +19,28 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setupNavigation() {
-        // Navigasi ke Cek Gizi
         binding.cardGizi.setOnClickListener {
             findNavController().navigate(R.id.action_home_to_gizi)
         }
 
-        // Navigasi ke Monitoring Pertumbuhan (MPAndroidChart)
         binding.cardMonitoring.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_monitoring)
+            findNavController().navigate(R.id.action_home_to_kelola)
         }
 
-        // Navigasi ke Konsultasi (Chat)
         binding.cardKonsultasi.setOnClickListener {
             findNavController().navigate(R.id.action_home_to_konsultasi)
+        }
+
+        binding.cardMateriEdukasi.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_materi)
+        }
+
+        binding.cardMakan.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_makan)
+        }
+
+        binding.cardAgenda.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_agenda)
         }
     }
 

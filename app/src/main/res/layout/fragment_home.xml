@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/soft_pink">
+    android:background="#FFE5F1">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                     android:id="@+id/ivMenu"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_menu" />
+                    android:src="@android:drawable/ic_menu_sort_by_size" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -56,13 +56,13 @@
                 android:layout_marginTop="8dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
-                app:backgroundTint="@color/white">
+                app:backgroundTint="@android:color/white">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tanggal: 20 Mei 2026" android:textColor="@color/gray_text" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tanggal: 20 Mei 2026" android:textColor="#888888" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IMUNISASI RUTIN POSYANDU" android:fontFamily="sans-serif-black" android:layout_marginTop="4dp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lokasi: Balai Desa Banjarmasin" android:layout_marginTop="4dp"/>
                 </LinearLayout>
@@ -77,32 +77,122 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardGizi"
-                    style="@style/SibundaMenuCard">
-                    <TextView style="@style/SibundaMenuText" android:text="Cek Gizi Balita" />
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:backgroundTint="@android:color/white">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="Cek Gizi Balita"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif-medium" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardMonitoring"
-                    style="@style/SibundaMenuCard">
-                    <TextView style="@style/SibundaMenuText" android:text="Kelola Pertumbuhan" />
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:backgroundTint="@android:color/white">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="Kelola Pertumbuhan"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif-medium" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardKonsultasi"
-                    style="@style/SibundaMenuCard">
-                    <TextView style="@style/SibundaMenuText" android:text="Konsultasi Ahli Gizi" />
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:backgroundTint="@android:color/white">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="Konsultasi Ahli Gizi"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif-medium" />
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView style="@style/SibundaMenuCard">
-                    <TextView style="@style/SibundaMenuText" android:text="Materi Edukasi" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardMateriEdukasi"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:backgroundTint="@android:color/white">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="Materi Edukasi"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif-medium" />
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView style="@style/SibundaMenuCard">
-                    <TextView style="@style/SibundaMenuText" android:text="Monitoring Pola Makan" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardMakan"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:backgroundTint="@android:color/white">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="Monitoring Pola Makan"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif-medium" />
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView style="@style/SibundaMenuCard">
-                    <TextView style="@style/SibundaMenuText" android:text="Agenda Posyandu" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardAgenda"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:backgroundTint="@android:color/white">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="Agenda Posyandu"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif-medium" />
                 </com.google.android.material.card.MaterialCardView>
 
             </GridLayout>

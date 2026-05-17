@@ -1,4 +1,4 @@
-package com.example.sibunda.ui.pertumbuhan
+package com.example.sibunda.ui.kelola_pertumbuhan
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.sibunda.R
 
 class KelolaPertumbuhanFragment : Fragment() {
 
@@ -26,30 +27,20 @@ class KelolaPertumbuhanFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val idlayout = resources.getIdentifier("fragment_kelola__pertumbuhan_", "layout", requireContext().packageName)
-        return inflater.inflate(idlayout, container, false)
+        return inflater.inflate(R.layout.fragment_kelola__pertumbuhan_, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val idpkg = requireContext().packageName
-        val idback = resources.getIdentifier("btnBack", "id", idpkg)
-        val idsearch = resources.getIdentifier("edtSearch", "id", idpkg)
-        val idcari = resources.getIdentifier("btnCari", "id", idpkg)
-        val idnama = resources.getIdentifier("txtNama", "id", idpkg)
-        val idgender = resources.getIdentifier("txtGender", "id", idpkg)
-        val idumur = resources.getIdentifier("txtUmur", "id", idpkg)
-        val idstatus = resources.getIdentifier("txtStatus", "id", idpkg)
+        btnback = view.findViewById(R.id.btnBack)
+        edtsearch = view.findViewById(R.id.edtSearch)
+        btncari = view.findViewById(R.id.btnCari)
 
-        btnback = view.findViewById(idback)
-        edtsearch = view.findViewById(idsearch)
-        btncari = view.findViewById(idcari)
-
-        txtnama = view.findViewById(idnama)
-        txtgender = view.findViewById(idgender)
-        txtumur = view.findViewById(idumur)
-        txtstatus = view.findViewById(idstatus)
+        txtnama = view.findViewById(R.id.txtNama)
+        txtgender = view.findViewById(R.id.txtGender)
+        txtumur = view.findViewById(R.id.txtUmur)
+        txtstatus = view.findViewById(R.id.txtStatus)
 
         btncari.setOnClickListener {
             val nama = edtsearch.text.toString()
