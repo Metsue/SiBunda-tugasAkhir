@@ -24,7 +24,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 // Skenario Blackbox: Jika valid, pindah ke Home (Dashboard)
-                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                findNavController().navigate(R.id.action_login_to_home)
             } else {
                 Toast.makeText(context, "Silakan isi semua bidang", Toast.LENGTH_SHORT).show()
             }
@@ -32,7 +32,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         // Navigasi ke halaman registrasi
         binding.tvToRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+            findNavController().navigate(R.id.action_login_to_register)
         }
     }
 
