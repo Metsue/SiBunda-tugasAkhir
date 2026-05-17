@@ -18,6 +18,12 @@ class AgendaFragment : Fragment(R.layout.fragment_agenda) {
     private lateinit var txtTahun: TextView
     private lateinit var txtInfo: TextView
 
+    private val dataAgenda = mapOf(
+        "2026-05-17" to "Hari Pemeriksaan Balita",
+        "2026-05-20" to "Jadwal Imunisasi Campak",
+        "2026-06-05" to "Pemberian Vitamin A"
+    )
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -28,53 +34,31 @@ class AgendaFragment : Fragment(R.layout.fragment_agenda) {
         txtInfo = view.findViewById(R.id.txtInfo)
 
         val calendar = Calendar.getInstance()
-
-        updateTanggal(calendar)
+        updateTanggalDanInfo(calendar)
 
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-
             val selectedCalendar = Calendar.getInstance()
             selectedCalendar.set(year, month, dayOfMonth)
-
-            updateTanggal(selectedCalendar)
-
-            txtInfo.text =
-                "$dayOfMonth ${getNamaBulan(month)}:\nHari Pemeriksaan Balita"
+            updateTanggalDanInfo(selectedCalendar)
         }
     }
 
-    private fun updateTanggal(calendar: Calendar) {
-
-        val tanggal =
-            SimpleDateFormat("dd", Locale.getDefault()).format(calendar.time)
-
-        val bulan =
-            SimpleDateFormat("MMMM", Locale("id", "ID")).format(calendar.time)
-
-        val tahun =
-            SimpleDateFormat("yyyy", Locale.getDefault()).format(calendar.time)
+    private fun updateTanggalDanInfo(calendar: Calendar) {
+        val tanggal = SimpleDateFormat("dd", Locale.getDefault()).format(calendar.time)
+        val bulan = SimpleDateFormat("MMMM", Locale("id", "ID")).format(calendar.time)
+        val tahun = SimpleDateFormat("yyyy", Locale.getDefault()).format(calendar.time)
 
         txtTanggal.text = tanggal
         txtBulan.text = bulan
         txtTahun.text = tahun
-    }
 
-    private fun getNamaBulan(month: Int): String {
+        val keyTanggal = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
+        val agendaHariIni = dataAgenda[keyTanggal]
 
-        return when (month) {
-            0 -> "Januari"
-            1 -> "Februari"
-            2 -> "Maret"
-            3 -> "April"
-            4 -> "Mei"
-            5 -> "Juni"
-            6 -> "Juli"
-            7 -> "Agustus"
-            8 -> "September"
-            9 -> "Oktober"
-            10 -> "November"
-            11 -> "Desember"
-            else -> ""
+        if (agendaHariIni != null) {
+            txtInfo.text = "$tanggal $bulan:\n$agendaHariIni"
+        } else {
+            txtInfo.text = "$tanggal $bulan:\nTidak ada agenda kegiatan"
         }
     }
 }

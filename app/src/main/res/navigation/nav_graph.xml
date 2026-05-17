@@ -5,105 +5,163 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
 
+    <!-- SPLASH -->
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.sibunda.ui.splash.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
+
         <action
             android:id="@+id/action_splash_to_login"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+
     </fragment>
 
+    <!-- LOGIN -->
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.sibunda.ui.auth.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
+
         <action
             android:id="@+id/action_login_to_home"
             app:destination="@id/navigation_home"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+
         <action
             android:id="@+id/action_login_to_register"
             app:destination="@id/registerFragment" />
+
     </fragment>
 
+    <!-- REGISTER -->
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.sibunda.ui.auth.RegisterFragment"
         android:label="RegisterFragment"
         tools:layout="@layout/fragment_register">
+
         <action
             android:id="@+id/action_register_to_login"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/registerFragment"
             app:popUpToInclusive="true" />
+
     </fragment>
 
+    <!-- HOME -->
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.sibunda.ui.dashboard.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home">
+
         <action
             android:id="@+id/action_home_to_gizi"
             app:destination="@id/giziFragment" />
+
         <action
-            android:id="@+id/action_home_to_monitoring"
-            app:destination="@id/monitoringFragment" />
+            android:id="@+id/action_home_to_kelola"
+            app:destination="@id/kelolaPertumbuhanFragment" />
+
         <action
             android:id="@+id/action_home_to_konsultasi"
             app:destination="@id/navigation_chat" />
+
+        <action
+            android:id="@+id/action_home_to_materi"
+            app:destination="@id/materiFragment" />
+
+        <action
+            android:id="@+id/action_home_to_makan"
+            app:destination="@id/makanFragment" />
+
+        <action
+            android:id="@+id/action_home_to_agenda"
+            app:destination="@id/agendaFragment" />
+
     </fragment>
 
+    <!-- KONSULTASI -->
     <fragment
         android:id="@+id/navigation_chat"
         android:name="com.example.sibunda.ui.konsultasi.KonsultasiFragment"
         android:label="Konsultasi"
         tools:layout="@layout/fragment_konsultasi">
+
         <action
             android:id="@+id/action_konsultasi_to_kontak"
             app:destination="@id/kontakDokterFragment" />
+
     </fragment>
 
+    <!-- PROFILE -->
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.sibunda.ui.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile">
+
         <action
             android:id="@+id/action_profile_to_login"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
+
     </fragment>
 
+    <!-- SETTINGS -->
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.sibunda.ui.settings.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" />
 
+    <!-- GIZI -->
     <fragment
         android:id="@+id/giziFragment"
         android:name="com.example.sibunda.ui.gizi.GiziFragment"
         android:label="Gizi"
         tools:layout="@layout/fragment_cek_gizi" />
 
+    <!-- keloa pertumbuhan -->
     <fragment
-        android:id="@+id/monitoringFragment"
-        android:name="com.example.sibunda.ui.menu_gizi.MenuGiziFragment"
-        android:label="Monitoring"
-        tools:layout="@layout/fragment_menu_gizi" />
+        android:id="@+id/kelolaPertumbuhanFragment"
+        android:name="com.example.sibunda.ui.kelola_pertumbuhan.KelolaPertumbuhanFragment"
+        android:label="Kelola Pertumbuhan"
+        tools:layout="@layout/fragment_kelola__pertumbuhan_" />
 
+    <!-- KONTAK DOKTER -->
     <fragment
         android:id="@+id/kontakDokterFragment"
         android:name="com.example.sibunda.ui.kontak_dokter.KontakDokterFragment"
         android:label="Kontak Dokter"
         tools:layout="@layout/fragment_kontak_dokter" />
+
+    <!-- MATERI -->
+    <fragment
+        android:id="@+id/materiFragment"
+        android:name="com.example.sibunda.ui.edukasi.EdukasiFragment"
+        android:label="Materi"
+        tools:layout="@layout/fragment_edukasi" />
+
+    <!-- MAKAN -->
+    <fragment
+        android:id="@+id/makanFragment"
+        android:name="com.example.sibunda.ui.menu_gizi.MenuGiziFragment"
+        android:label="Makan"
+        tools:layout="@layout/fragment_menu_gizi" />
+
+    <!-- AGENDA -->
+    <fragment
+        android:id="@+id/agendaFragment"
+        android:name="com.example.sibunda.ui.agenda.AgendaFragment"
+        android:label="Agenda"
+        tools:layout="@layout/fragment_agenda" />
 
 </navigation>
