@@ -1,14 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.konsultasi.KonsultasiFragment">
+    android:background="@color/bg_pink_soft">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-</FrameLayout>
+
+        <!-- Judul -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Konsultasi Gizi"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_dark_pink"
+            android:layout_gravity="center" />
+
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pilih jenis konsultasi yang diperlukan"
+            android:textSize="14sp"
+            android:textColor="@color/text_gray"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center" />
+
+
+        <!-- Card Menu Konsultasi -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:strokeColor="@color/stroke_pink"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@color/bg_container_pink">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGiziBalita"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Konsultasi Gizi Balita"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/main_pink"
+                    app:cornerRadius="16dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStunting"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Konsultasi Stunting"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/main_pink"
+                    app:cornerRadius="16dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPolaMakan"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Konsultasi Pola Makan"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/main_pink"
+                    app:cornerRadius="16dp" />
+
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </LinearLayout>
+</ScrollView>

@@ -62,15 +62,25 @@
 
     <fragment
         android:id="@+id/navigation_chat"
-        android:name="com.example.sibunda.ui.chat.ChatFragment"
-        android:label="Chat"
-        tools:layout="@layout/fragment_chat" />
+        android:name="com.example.sibunda.ui.konsultasi.KonsultasiFragment"
+        android:label="Konsultasi"
+        tools:layout="@layout/fragment_konsultasi">
+        <action
+            android:id="@+id/action_konsultasi_to_kontak"
+            app:destination="@id/kontakDokterFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.sibunda.ui.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_settings"
@@ -82,12 +92,18 @@
         android:id="@+id/giziFragment"
         android:name="com.example.sibunda.ui.gizi.GiziFragment"
         android:label="Gizi"
-        tools:layout="@layout/fragment_gizi" />
+        tools:layout="@layout/fragment_cek_gizi" />
 
     <fragment
         android:id="@+id/monitoringFragment"
-        android:name="com.example.sibunda.ui.monitoring.MonitoringFragment"
+        android:name="com.example.sibunda.ui.menu_gizi.MenuGiziFragment"
         android:label="Monitoring"
-        tools:layout="@layout/fragment_monitoring" />
+        tools:layout="@layout/fragment_menu_gizi" />
+
+    <fragment
+        android:id="@+id/kontakDokterFragment"
+        android:name="com.example.sibunda.ui.kontak_dokter.KontakDokterFragment"
+        android:label="Kontak Dokter"
+        tools:layout="@layout/fragment_kontak_dokter" />
 
 </navigation>

@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:text="Masuk ke SiBunda"
                 android:textSize="22sp"
-                android:fontFamily="@font/poppins_bold"
+                android:textStyle="bold"
                 android:textColor="@color/rose_pink"/>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -70,7 +70,7 @@
                 android:layout_height="55dp"
                 android:layout_marginTop="24dp"
                 android:text="MASUK"
-                android:fontFamily="@font/poppins_bold"
+                android:textStyle="bold"
                 app:cornerRadius="12dp"
                 android:backgroundTint="@color/rose_pink"/>
 
@@ -81,8 +81,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:text="Belum punya akun? Daftar di sini"
-                android:textColor="@color/rose_pink"
-                android:fontFamily="@font/poppins_medium"/>
+                android:textColor="@color/rose_pink" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

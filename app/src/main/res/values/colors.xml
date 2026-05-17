@@ -11,6 +11,14 @@
     <color name="light_blue">#7BB8FF</color>
     <color name="gray_text">#757575</color>
 
+    <!-- Missing Colors used in layouts -->
+    <color name="bg_pink_soft">#FFF0F5</color>
+    <color name="text_dark_pink">#880E4F</color>
+    <color name="text_gray">#757575</color>
+    <color name="stroke_pink">#F48FB1</color>
+    <color name="bg_container_pink">#FFF5F8</color>
+    <color name="main_pink">#F48FB1</color>
+
     <color name="primary">#F48FB1</color>
     <color name="onPrimary">#FFFFFF</color>
     <color name="primaryContainer">#FFD6E7</color>

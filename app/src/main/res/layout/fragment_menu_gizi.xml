@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_pink_soft"
+    android:fillViewport="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu Gizi"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_dark_pink"
+            android:layout_gravity="center" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pilih umur balita untuk melihat pembahasan gizi"
+            android:textSize="14sp"
+            android:textColor="@color/text_gray"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center" />
+
+
+        <!-- Card Filter -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:strokeColor="@color/stroke_pink"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@color/bg_container_pink">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih Umur Balita"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_dark_pink"
+                    android:layout_marginBottom="8dp" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerUmur"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:padding="12dp"
+                    android:background="@color/soft_pink"
+                    android:layout_marginBottom="16dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCari"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:text="Cari Pembahasan"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/main_pink"
+                    app:cornerRadius="16dp" />
+
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- Judul List -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hasil Pembahasan"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_dark_pink"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="10dp" />
+
+
+        <!-- Card List -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="6dp"
+            app:strokeColor="@color/stroke_pink"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@color/bg_container_pink">
+
+
+            <ListView
+                android:id="@+id/lvPembahasan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/stroke_pink"
+                android:dividerHeight="1dp"
+                android:padding="8dp"
+                android:background="@color/bg_container_pink" />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
