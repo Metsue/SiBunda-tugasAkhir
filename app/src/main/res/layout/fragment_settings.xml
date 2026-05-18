@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/soft_pink">
+
+    <TextView
+        android:id="@+id/tvHeaderSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Pengaturan Aplikasi"
+        android:textColor="@color/rose_pink"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeaderSettings">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivProfilePicture"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_profile"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Bunda Prans"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:text="bunda.prans@email.com"
+                            android:textColor="#757575"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <LinearLayout
+                        android:id="@+id/btnMenuProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="Ubah Profil Bunda"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E0E0E0" android:layout_marginHorizontal="16dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/btnMenuTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="Ganti Tema Warna"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E0E0E0" android:layout_marginHorizontal="16dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/btnMenuNotification"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="Notifikasi Agenda &amp; Posyandu"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E0E0E0" android:layout_marginHorizontal="16dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/btnMenuAbout"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="Tentang Aplikasi SiBunda"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/rose_pink"
+                android:fontFamily="sans-serif-black"
+                android:text="KELUAR AKUN"
+                android:textSize="15sp"
+                app:cornerRadius="16dp"
+                app:elevation="2dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

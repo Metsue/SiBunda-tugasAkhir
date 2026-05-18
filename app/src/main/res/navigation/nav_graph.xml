@@ -5,6 +5,13 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
 
+    <!-- GLOBAL ACTION FOR LOGOUT -->
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
     <!-- SPLASH -->
     <fragment
         android:id="@+id/splashFragment"

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/soft_pink">
+
+    <TextView
+        android:id="@+id/tvHeaderProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Profil Bunda"
+        android:textColor="@color/rose_pink"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeaderProfile">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvAvatar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="0dp">
+
+                <ImageView
+                    android:id="@+id/ivProfileAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_profile" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="Nama Lengkap Bunda"
+                        android:textColor="#757575"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tvProfileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif-black"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="NIK (Nomor Induk Kependudukan)"
+                        android:textColor="#757575"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tvProfileNik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="Username / Email Akun"
+                        android:textColor="#757575"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tvProfileUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="Nomor Telepon"
+                        android:textColor="#757575"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tvProfilePhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="Alamat Rumah"
+                        android:textColor="#757575"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tvProfileAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:fontFamily="sans-serif-medium"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/rose_pink"
+                android:fontFamily="sans-serif-black"
+                android:text="UBAH DATA PROFIL"
+                android:textSize="15sp"
+                app:cornerRadius="16dp"
+                app:elevation="2dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
