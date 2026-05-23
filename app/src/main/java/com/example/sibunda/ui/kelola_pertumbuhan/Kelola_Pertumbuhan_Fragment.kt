@@ -4,54 +4,72 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import com.example.sibunda.R
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sibunda.core.data.local.entity.Balita
+import com.example.sibunda.databinding.FragmentKelolaPertumbuhanBinding
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 
 class KelolaPertumbuhanFragment : Fragment() {
-
-    private lateinit var btnback: ImageView
-    private lateinit var edtsearch: EditText
-    private lateinit var btncari: Button
-
-    private lateinit var txtnama: TextView
-    private lateinit var txtgender: TextView
-    private lateinit var txtumur: TextView
-    private lateinit var txtstatus: TextView
+    private var _binding: FragmentKelolaPertumbuhanBinding? = null
+    private val binding get() = _binding!!
+    private val viewmodel: BalitaViewModel by viewModels()
+    private lateinit var adapter: BalitaAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_kelola__pertumbuhan_, container, false)
+    ): View {
+        _binding = FragmentKelolaPertumbuhanBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setuprecyclerview()
 
-        btnback = view.findViewById(R.id.btnBack)
-        edtsearch = view.findViewById(R.id.edtSearch)
-        btncari = view.findViewById(R.id.btnCari)
-
-        txtnama = view.findViewById(R.id.txtNama)
-        txtgender = view.findViewById(R.id.txtGender)
-        txtumur = view.findViewById(R.id.txtUmur)
-        txtstatus = view.findViewById(R.id.txtStatus)
-
-        btncari.setOnClickListener {
-            val nama = edtsearch.text.toString()
-            txtnama.text = "Nama : $nama"
-            txtgender.text = "Jenis Kelamin : Laki-laki"
-            txtumur.text = "Umur : 3 Tahun"
-            txtstatus.text = "Status Gizi : Normal"
+        viewmodel.searchResults.observe(viewLifecycleOwner) { data ->
+            adapter.submitList(data)
+            updategrafik(data)
         }
 
-        btnback.setOnClickListener {
-            requireActivity().onBackPressedDispatcher.onBackPressed()
+        binding.edtSearch.addTextChangedListener { text ->
+            viewmodel.setSearchQuery(text.toString())
         }
+    }
+
+    private fun setuprecyclerview() {
+        adapter = BalitaAdapter()
+        binding.rvpertumbuhan.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvpertumbuhan.adapter = adapter
+    }
+
+    private fun updategrafik(list: List<Balita>) {
+        if (list.isEmpty()) return
+
+        val sortedlist = list.sortedBy { it.tanggal }
+        val entryberat = ArrayList<Entry>()
+        val entrytinggi = ArrayList<Entry>()
+
+        sortedlist.forEachIndexed { index, balita ->
+            entryberat.add(Entry(index.toFloat(), balita.berat.toFloat()))
+            entrytinggi.add(Entry(index.toFloat(), balita.tinggi.toFloat()))
+        }
+
+        val datasetberat = LineDataSet(entryberat, "Berat Badan (kg)")
+        val datasettedtinggi = LineDataSet(entrytinggi, "Tinggi Badan (cm)")
+
+        val linedata = LineData(datasetberat, datasettedtinggi)
+        binding.chartperkembangan.data = linedata
+        binding.chartperkembangan.invalidate()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

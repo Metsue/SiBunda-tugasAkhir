@@ -6,17 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.sibunda.R
+import androidx.fragment.app.viewModels
+import com.example.sibunda.core.data.local.entity.Balita
 import com.example.sibunda.databinding.FragmentCekGiziBinding
+import com.example.sibunda.ui.kelola_pertumbuhan.BalitaViewModel
 
-class GiziFragment : Fragment() {
-
+class CekGiziFragment : Fragment() {
     private var _binding: FragmentCekGiziBinding? = null
     private val binding get() = _binding!!
+    private val viewmodel: BalitaViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCekGiziBinding.inflate(inflater, container, false)
@@ -27,46 +28,38 @@ class GiziFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnHitung.setOnClickListener {
-            hitungGizi()
+            simpandata()
         }
     }
 
-    private fun hitungGizi() {
+    private fun simpandata() {
         val nama = binding.etNamaBalita.text.toString().trim()
-        val umurText = binding.etUmur.text.toString().trim()
-        val beratText = binding.etBerat.text.toString().trim()
-        val tinggiText = binding.etTinggi.text.toString().trim()
+        val umurstr = binding.etUmur.text.toString().trim()
+        val beratstr = binding.etBerat.text.toString().trim()
+        val tinggistr = binding.etTinggi.text.toString().trim()
 
-        if (nama.isEmpty() || umurText.isEmpty() || beratText.isEmpty() || tinggiText.isEmpty()) {
-            Toast.makeText(context, "Harap isi semua data terlebih dahulu", Toast.LENGTH_SHORT).show()
+        if (nama.isEmpty() || umurstr.isEmpty() || beratstr.isEmpty() || tinggistr.isEmpty()) {
+            Toast.makeText(requireContext(), "Semua data harus diisi", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val umur = umurText.toIntOrNull()
-        val berat = beratText.toDoubleOrNull()
-        val tinggi = tinggiText.toDoubleOrNull()
+        val umur = umurstr.toIntOrNull() ?: 0
+        val berat = beratstr.toDoubleOrNull() ?: 0.0
+        val tinggi = tinggistr.toDoubleOrNull() ?: 0.0
 
-        if (umur == null || berat == null || tinggi == null) {
-            Toast.makeText(context, "Data umur, berat, dan tinggi harus berupa angka", Toast.LENGTH_SHORT).show()
-            return
-        }
+        val statusgizi = viewmodel.hitungStatusGizi(berat, umur)
+        binding.tvHasil.text = "Status Gizi: $statusgizi"
 
-        val statusGizi = when {
-            berat < 10 -> "Gizi Kurang"
-            berat in 10.0..15.0 -> "Gizi Normal"
-            else -> "Gizi Berlebih"
-        }
+        val balita = Balita(
+            nama = nama,
+            umur = umur,
+            berat = berat,
+            tinggi = tinggi,
+            statusgizi = statusgizi
+        )
 
-        val hasil = """
-           Nama Balita: $nama
-           Umur: $umur bulan
-           Berat Badan: $berat kg
-           Tinggi Badan: $tinggi cm
-          
-           Status Gizi: $statusGizi
-       """.trimIndent()
-
-        binding.tvHasil.text = hasil
+        viewmodel.insert(balita)
+        Toast.makeText(requireContext(), "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {

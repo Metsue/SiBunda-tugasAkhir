@@ -3,12 +3,13 @@ package com.example.sibunda.core.data.local.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "balita_table")
-data class BalitaEntity(
-    @PrimaryKey val id: String,
+@Entity(tableName = "balita")
+data class Balita (
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val nama: String,
-    val umurBulan: Int,
-    val beratBadan: Double,
-    val tinggiBadan: Double,
-    val jenisKelamin: String
+    val umur: Int,
+    val berat: Double,
+    val tinggi: Double,
+    val statusgizi: String,
+    val tanggal: Long = System.currentTimeMillis()
 )

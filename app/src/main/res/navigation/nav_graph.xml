@@ -132,7 +132,7 @@
     <!-- GIZI -->
     <fragment
         android:id="@+id/giziFragment"
-        android:name="com.example.sibunda.ui.gizi.GiziFragment"
+        android:name="com.example.sibunda.ui.gizi.CekGiziFragment"
         android:label="Gizi"
         tools:layout="@layout/fragment_cek_gizi" />
 
