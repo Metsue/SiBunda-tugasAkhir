@@ -1,17 +1,80 @@
 package com.example.sibunda.core.data.repository
 
-import com.example.sibunda.core.data.local.entity.Balita
+import com.example.sibunda.core.data.local.entity.*
 import com.example.sibunda.core.data.local.room.BalitaDao
 import kotlinx.coroutines.flow.Flow
 
-class BalitaRepository(private val balitaDao: BalitaDao) {
-    val allBalita: Flow<List<Balita>> = balitaDao.getAllBalita()
+class BalitaRepository(
+    private val dao: BalitaDao
+) {
 
-    suspend fun insert(balita: Balita) {
-        balitaDao.insertBalita(balita)
+    suspend fun tambahData(
+        namaIbu: String,
+        namaAnak: String,
+        umur: Int,
+        berat: Double,
+        tinggi: Double,
+        status: String
+    ) {
+        // 1. CEK ATAU BUAT IBU
+        val existingIbu = dao.getIbuByNama(namaIbu)
+        val ibuId = existingIbu?.id ?: dao.insertIbu(Ibu(namaIbu = namaIbu)).toInt()
+
+        // 2. CEK ATAU BUAT/UPDATE BALITA
+        val existingBalita = dao.getBalitaByNama(namaAnak, ibuId)
+        
+        val balitaId = if (existingBalita != null) {
+            // Update data terbaru ke tabel balita agar sinkron dengan list
+            dao.insertBalita(
+                existingBalita.copy(
+                    umur = umur,
+                    berat = berat,
+                    tinggi = tinggi,
+                    statusgizi = status,
+                    tanggal = System.currentTimeMillis()
+                )
+            )
+            existingBalita.id
+        } else {
+            // Insert balita baru
+            dao.insertBalita(
+                Balita(
+                    ibuId = ibuId,
+                    nama = namaAnak,
+                    umur = umur,
+                    berat = berat,
+                    tinggi = tinggi,
+                    statusgizi = status
+                )
+            ).toInt()
+        }
+
+        // 3. TAMBAH KE RIWAYAT PERTUMBUHAN
+        dao.insertPertumbuhan(
+            Pertumbuhan(
+                balitaId = balitaId,
+                nama = namaAnak,
+                umur = umur,
+                berat = berat,
+                tinggi = tinggi,
+                statusgizi = status
+            )
+        )
     }
 
-    fun search(query: String): Flow<List<Balita>> {
-        return balitaDao.searchBalitaByNama("%$query%")
+    fun getBalitaByIbu(ibuId: Int): Flow<List<Balita>> {
+        return dao.getBalitaByIbu(ibuId)
+    }
+
+    fun getBalitaByMotherName(namaIbu: String): Flow<List<Balita>> {
+        return dao.getBalitaByMotherName(namaIbu)
+    }
+
+    fun searchBalita(query: String): Flow<List<Balita>> {
+        return dao.searchBalita("%$query%")
+    }
+
+    fun getRiwayatPertumbuhan(balitaId: Int): Flow<List<Pertumbuhan>> {
+        return dao.getRiwayatPertumbuhan(balitaId)
     }
 }

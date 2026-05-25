@@ -1,91 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F6F6"
-    tools:context=".ui.kelola_pertumbuhan.KelolaPertumbuhanFragment">
+    android:background="#F5F6FA">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/headerTop"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#FF2D8D"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="18dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="18dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_menu"
+            app:tint="#FFFFFF"
+            android:contentDescription="@string/back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_weight="1"
+            android:text="@string/kelola_pertumbuhan"
+            android:textColor="#FFFFFF"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+        <!-- BUTTON PDF -->
+        <Button
+            android:id="@+id/btnDownloadPdf"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:backgroundTint="#FFFFFF"
+            android:elevation="2dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingHorizontal="14dp"
+            android:text="@string/download_pdf"
+            android:textAllCaps="false"
+            android:textColor="#FF2D8D"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- SEARCH -->
+    <EditText
+        android:id="@+id/edtSearch"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/soft_gray_background"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:hint="@string/cari_nama_balita"
+        android:paddingHorizontal="16dp"
+        android:textColor="#000000"
+        android:textColorHint="#888888"
+        android:textSize="14sp"
+        android:inputType="textPersonName"
+        android:autofillHints="name"
+        app:layout_constraintTop_toBottomOf="@id/headerTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- CHART CARD -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/chartCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/edtSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
-            android:id="@+id/headerTop"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:background="#FF2D8D"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
 
             <TextView
-                android:id="@+id/txtTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kelola Pertumbuhan"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:text="@string/grafik_perkembangan_balita"
+                android:textColor="#222222"
+                android:textSize="16sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/riwayat_berat_dan_tinggi_badan"
+                android:textColor="#888888"
+                android:textSize="12sp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chartperkembangan"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_marginTop="12dp" />
 
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/searchCard"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            app:cardCornerRadius="22dp"
-            app:cardElevation="6dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headerTop">
+    </com.google.android.material.card.MaterialCardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
+    <!-- TITLE -->
+    <TextView
+        android:id="@+id/tvRiwayat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/riwayat_data_balita"
+        android:textColor="#222222"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/chartCard"
+        app:layout_constraintStart_toStartOf="parent" />
 
-                <EditText
-                    android:id="@+id/edtSearch"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:hint="Nama balita..."
-                    android:paddingStart="14dp"
-                    android:textSize="15sp" />
+    <!-- RECYCLER -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvpertumbuhan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:clipToPadding="false"
+        android:paddingBottom="90dp"
+        app:layout_constraintTop_toBottomOf="@id/tvRiwayat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_balita" />
 
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/chartperkembangan"
-            android:layout_width="0dp"
-            android:layout_height="250dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            app:layout_constraintTop_toBottomOf="@id/searchCard"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvpertumbuhan"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/chartperkembangan"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/item_balita" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

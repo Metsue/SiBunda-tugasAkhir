@@ -21,14 +21,15 @@
                 android:id="@+id/btnBack"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@android:drawable/ic_media_previous"
-                app:tint="#FFFFFF" />
+                android:src="@drawable/ic_menu"
+                app:tint="#FFFFFF"
+                android:contentDescription="@string/back" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
-                android:text="Ebook Edukasi"
+                android:text="@string/ebook_edukasi"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -40,13 +41,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="20dp"
-            android:text="Daftar Ebook"
+            android:text="@string/daftar_ebook"
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <!-- EBOOK 1 -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEbook1"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginStart="18dp"
@@ -71,7 +73,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="24dp"
-                        app:tint="#FF2D8D"/>
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:tint="#FF2D8D"
+                        android:contentDescription="@string/panduan_gizi_balita" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -79,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
-                    android:text="Panduan Gizi Balita"
+                    android:text="@string/panduan_gizi_balita"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
@@ -88,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="Panduan makanan sehat anak"
+                    android:text="@string/panduan_makanan_sehat"
                     android:textColor="#888888"
                     android:textSize="13sp"/>
 
@@ -98,6 +102,7 @@
 
         <!-- EBOOK 2 -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEbook2"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_margin="18dp"
@@ -120,7 +125,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="24dp"
-                        app:tint="#2EC4B6"/>
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:tint="#2EC4B6"
+                        android:contentDescription="@string/kesehatan_bayi" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -128,7 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
-                    android:text="Kesehatan Bayi"
+                    android:text="@string/kesehatan_bayi"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
@@ -137,7 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="Perawatan bayi sejak lahir"
+                    android:text="@string/perawatan_bayi"
                     android:textColor="#888888"
                     android:textSize="13sp"/>
 
@@ -147,6 +154,7 @@
 
         <!-- EBOOK 3 -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEbook3"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_margin="18dp"
@@ -169,7 +177,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="24dp"
-                        app:tint="#FF2D8D"/>
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:tint="#FF2D8D"
+                        android:contentDescription="@string/imunisasi_anak" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -177,7 +187,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
-                    android:text="Imunisasi Anak"
+                    android:text="@string/imunisasi_anak"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
@@ -186,7 +196,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="Jadwal dan manfaat imunisasi"
+                    android:text="@string/jadwal_imunisasi"
                     android:textColor="#888888"
                     android:textSize="13sp"/>
 
@@ -196,6 +206,7 @@
 
         <!-- EBOOK 4 -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEbook4"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_margin="18dp"
@@ -218,7 +229,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="24dp"
-                        app:tint="#2EC4B6"/>
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:tint="#2EC4B6"
+                        android:contentDescription="@string/tumbuh_kembang_anak" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -226,7 +239,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
-                    android:text="Tumbuh Kembang Anak"
+                    android:text="@string/tumbuh_kembang_anak"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
@@ -235,7 +248,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="Panduan perkembangan balita"
+                    android:text="@string/panduan_perkembangan"
                     android:textColor="#888888"
                     android:textSize="13sp"/>
 
@@ -245,6 +258,7 @@
 
         <!-- EBOOK 5 -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEbook5"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_margin="18dp"
@@ -268,7 +282,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="24dp"
-                        app:tint="#FF2D8D"/>
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:tint="#FF2D8D"
+                        android:contentDescription="@string/pencegahan_stunting" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -276,7 +292,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
-                    android:text="Pencegahan Stunting"
+                    android:text="@string/pencegahan_stunting"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
@@ -285,7 +301,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="Edukasi pencegahan stunting"
+                    android:text="@string/edukasi_stunting"
                     android:textColor="#888888"
                     android:textSize="13sp"/>
 

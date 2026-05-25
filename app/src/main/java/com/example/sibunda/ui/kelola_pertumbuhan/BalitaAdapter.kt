@@ -8,13 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sibunda.core.data.local.entity.Balita
 import com.example.sibunda.databinding.ItemBalitaBinding
 
-class BalitaAdapter : ListAdapter<Balita, BalitaAdapter.ViewHolder>(DiffCallback) {
+class BalitaAdapter(private val onItemClick: (Balita) -> Unit) : ListAdapter<Balita, BalitaAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(private val binding: ItemBalitaBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(balita: Balita) {
+        fun bind(balita: Balita, onItemClick: (Balita) -> Unit) {
             binding.tvnamabalita.text = balita.nama
             binding.tvinfobalita.text = "${balita.umur} bulan | BB: ${balita.berat} kg | TB: ${balita.tinggi} cm"
             binding.tvstatusgizi.text = balita.statusgizi
+            
+            binding.root.setOnClickListener {
+                onItemClick(balita)
+            }
         }
     }
 
@@ -24,7 +28,7 @@ class BalitaAdapter : ListAdapter<Balita, BalitaAdapter.ViewHolder>(DiffCallback
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onItemClick)
     }
 
     companion object DiffCallback : DiffUtil.ItemCallback<Balita>() {

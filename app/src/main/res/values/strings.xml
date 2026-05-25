@@ -1,5 +1,43 @@
 <resources>
     <string name="app_name">SiBunda</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kelola_pertumbuhan">Kelola Pertumbuhan</string>
+    <string name="download_pdf">Download PDF</string>
+    <string name="cari_nama_balita">Cari Nama Balita...</string>
+    <string name="grafik_perkembangan_balita">Grafik Perkembangan Balita</string>
+    <string name="riwayat_berat_dan_tinggi_badan">Riwayat berat dan tinggi badan</string>
+    <string name="riwayat_data_balita">Riwayat Data Balita</string>
+    <string name="back">Kembali</string>
+
+    <!-- Home strings -->
+    <string name="welcome">Selamat Datang</string>
+    <string name="informasi_agenda">Informasi Agenda</string>
+    <string name="cek_gizi_balita">Cek Gizi Balita</string>
+    <string name="konsultasi_ahli_gizi">Konsultasi Ahli Gizi</string>
+    <string name="materi_edukasi">Materi Edukasi</string>
+    <string name="monitoring_pola_makan">Monitoring Pola Makan</string>
+    <string name="agenda_posyandu">Agenda Posyandu</string>
+
+    <!-- Ebook strings -->
+    <string name="ebook_edukasi">Ebook Edukasi</string>
+    <string name="daftar_ebook">Daftar Ebook</string>
+    <string name="panduan_gizi_balita">Panduan Gizi Balita</string>
+    <string name="panduan_makanan_sehat">Panduan makanan sehat anak</string>
+    <string name="kesehatan_bayi">Kesehatan Bayi</string>
+    <string name="perawatan_bayi">Perawatan bayi sejak lahir</string>
+    <string name="imunisasi_anak">Imunisasi Anak</string>
+    <string name="jadwal_imunisasi">Jadwal dan manfaat imunisasi</string>
+    <string name="tumbuh_kembang_anak">Tumbuh Kembang Anak</string>
+    <string name="panduan_perkembangan">Panduan perkembangan balita</string>
+    <string name="pencegahan_stunting">Pencegahan Stunting</string>
+    <string name="edukasi_stunting">Edukasi pencegahan stunting</string>
+
+    <!-- Video Edukasi strings -->
+    <string name="video_edukasi">Video Edukasi</string>
+    <string name="daftar_video">Daftar Video</string>
+    <string name="cara_menjaga_gizi">Cara Menjaga Gizi Balita</string>
+    <string name="pola_makan_sehat">Pola Makan Sehat Anak</string>
+    <string name="pentingnya_imunisasi">Pentingnya Imunisasi</string>
+    <string name="perawatan_bayi_video">Perawatan Bayi</string>
+    <string name="tumbuh_kembang_anak_video">Tumbuh Kembang Anak</string>
 </resources>

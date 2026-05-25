@@ -4,25 +4,44 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.sibunda.core.data.local.entity.Balita
+import com.example.sibunda.core.data.local.entity.*
 
-@Database(entities = [Balita::class], version = 1, exportSchema = false)
+@Database(
+    entities = [
+        Ibu::class,
+        Balita::class,
+        Pertumbuhan::class,
+        AgendaEntity::class,
+        ChatEntity::class
+    ],
+    version = 5,
+    exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun balitaDao(): BalitaDao
+    abstract fun sibundaDao(): SibundaDao
 
     companion object {
+
         @Volatile
-        private var instance: AppDatabase? = null
+        private var INSTANCE: AppDatabase? = null
 
         fun getDatabase(context: Context): AppDatabase {
-            return instance ?: synchronized(this) {
-                val newInstance = Room.databaseBuilder(
+
+            return INSTANCE ?: synchronized(this) {
+
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
                     "sibunda_db"
-                ).build()
-                instance = newInstance
-                newInstance
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
+
+                INSTANCE = instance
+
+                instance
             }
         }
     }

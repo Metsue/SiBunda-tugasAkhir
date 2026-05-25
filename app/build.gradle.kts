@@ -59,6 +59,8 @@ dependencies {
     // MPAndroidChart untuk Grafik Pertumbuhan
     implementation(libs.mpandroidchart)
 
+    //download pdf
+    implementation("com.itextpdf:itext7-core:7.1.15")
     // Lifecycle (ViewModel, LiveData)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)

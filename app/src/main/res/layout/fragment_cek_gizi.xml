@@ -6,15 +6,12 @@
     android:layout_height="match_parent"
     android:background="@color/bg_pink_soft">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp">
 
-
-        <!-- Judul -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,8 +21,6 @@
             android:textColor="@color/text_dark_pink"
             android:layout_gravity="center" />
 
-
-        <!-- Subtitle -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,8 +31,6 @@
             android:layout_marginBottom="20dp"
             android:layout_gravity="center" />
 
-
-        <!-- CARD FORM -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,35 +40,47 @@
             app:strokeWidth="1dp"
             android:backgroundTint="@color/bg_container_pink">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="16dp">
 
-
-                <!-- Nama Balita -->
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nama Balita"
-                    app:boxStrokeColor="@color/main_pink"
-                    app:hintTextColor="@color/text_dark_pink"
-                    app:boxBackgroundColor="@color/bg_container_pink">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
 
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etNamaBalita"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/text_dark_pink"
-                        android:textColorHint="@color/text_gray" />
+                        android:layout_weight="1"
+                        android:hint="Pilih Balita"
+                        app:boxStrokeColor="@color/main_pink"
+                        app:hintTextColor="@color/text_dark_pink"
+                        app:boxBackgroundColor="@color/bg_container_pink">
 
+                        <AutoCompleteTextView
+                            android:id="@+id/acNamaBalita"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textColor="@color/text_dark_pink" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnReset"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anak Baru"
+                        android:textColor="@color/main_pink"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
                 <!-- Umur -->
                 <com.google.android.material.textfield.TextInputLayout
@@ -83,23 +88,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Umur (bulan)"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     app:boxStrokeColor="@color/main_pink"
                     app:hintTextColor="@color/text_dark_pink"
                     app:boxBackgroundColor="@color/bg_container_pink">
-
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etUmur"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:textColor="@color/text_dark_pink"
-                        android:textColorHint="@color/text_gray" />
-
+                        android:textColor="@color/text_dark_pink" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
 
                 <!-- Berat -->
                 <com.google.android.material.textfield.TextInputLayout
@@ -112,18 +113,14 @@
                     app:hintTextColor="@color/text_dark_pink"
                     app:boxBackgroundColor="@color/bg_container_pink">
 
-
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etBerat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
-                        android:textColor="@color/text_dark_pink"
-                        android:textColorHint="@color/text_gray" />
-
+                        android:textColor="@color/text_dark_pink" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
 
                 <!-- Tinggi -->
                 <com.google.android.material.textfield.TextInputLayout
@@ -136,40 +133,31 @@
                     app:hintTextColor="@color/text_dark_pink"
                     app:boxBackgroundColor="@color/bg_container_pink">
 
-
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etTinggi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
-                        android:textColor="@color/text_dark_pink"
-                        android:textColorHint="@color/text_gray" />
-
+                        android:textColor="@color/text_dark_pink" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-
-                <!-- Tombol -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnHitung"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
-                    android:text="Hitung Status Gizi"
+                    android:text="Hitung &amp; Simpan Status Gizi"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:backgroundTint="@color/main_pink"
                     app:cornerRadius="16dp" />
 
-
             </LinearLayout>
-
 
         </com.google.android.material.card.MaterialCardView>
 
-
-        <!-- CARD HASIL -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -179,7 +167,6 @@
             app:strokeColor="@color/stroke_pink"
             app:strokeWidth="1dp"
             android:backgroundTint="@color/soft_pink">
-
 
             <TextView
                 android:id="@+id/tvHasil"
@@ -192,9 +179,7 @@
                 android:gravity="center"
                 android:padding="20dp" />
 
-
         </com.google.android.material.card.MaterialCardView>
-
 
     </LinearLayout>
 </ScrollView>

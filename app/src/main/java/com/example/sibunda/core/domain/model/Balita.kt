@@ -1,10 +1,11 @@
 package com.example.sibunda.core.domain.model
 
 data class Balita(
-    val id: String,
-    val nama: String,
-    val umurBulan: Int,
-    val beratBadan: Double,
-    val tinggiBadan: Double,
-    val jenisKelamin: String
+    val id: Int = 0,
+    val namaIbu: String,
+    val namaAnak: String,
+    val umur: Int,
+    val berat: Double,
+    val tinggi: Double,
+    val status: String
 )
