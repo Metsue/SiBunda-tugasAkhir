@@ -7,129 +7,209 @@
     android:background="@color/bg_pink_soft"
     android:fillViewport="true">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+        <!-- HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp"
+            android:background="@drawable/bg_header_menu_gizi">
 
-        <!-- Header -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Menu Gizi"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_dark_pink"
-            android:layout_gravity="center" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menu Gizi Balita"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pilih umur balita untuk melihat panduan gizi yang sesuai"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:alpha="0.95" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pilih umur balita untuk melihat pembahasan gizi"
-            android:textSize="14sp"
-            android:textColor="@color/text_gray"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
-            android:layout_gravity="center" />
+        </LinearLayout>
 
-
-        <!-- Card Filter -->
-        <com.google.android.material.card.MaterialCardView
+        <!-- CONTENT -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            app:strokeColor="@color/stroke_pink"
-            app:strokeWidth="1dp"
-            android:backgroundTint="@color/bg_container_pink">
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="24dp"
+            android:layout_marginTop="-38dp">
 
+            <!-- CARD PILIH UMUR -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/bg_container_pink"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="8dp"
+                app:strokeColor="@color/stroke_pink"
+                app:strokeWidth="1dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih Kategori Umur"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_dark_pink" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Setiap umur balita memiliki kebutuhan gizi yang berbeda."
+                        android:textSize="14sp"
+                        android:textColor="@color/text_gray"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="14dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Umur Balita"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_dark_pink"
+                        android:layout_marginBottom="8dp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerUmur"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp"
+                        android:background="@drawable/bg_spinner_pink"
+                        android:layout_marginBottom="16dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCari"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:text="Cari Pembahasan"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/main_pink"
+                        app:cornerRadius="18dp"
+                        app:icon="@android:drawable/ic_menu_search"
+                        app:iconTint="@color/white"
+                        app:iconGravity="textStart"
+                        app:iconPadding="8dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- INFORMASI KECIL -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/soft_pink"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/stroke_pink"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tips: Pantau tumbuh kembang balita secara rutin dan berikan makanan sesuai usia."
+                    android:textSize="14sp"
+                    android:textColor="@color/text_dark_pink"
+                    android:padding="14dp"
+                    android:lineSpacingExtra="3dp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- JUDUL HASIL -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="10dp">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Hasil Pembahasan"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_dark_pink" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pilih Umur Balita"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_dark_pink"
-                    android:layout_marginBottom="8dp" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerUmur"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:padding="12dp"
-                    android:background="@color/soft_pink"
-                    android:layout_marginBottom="16dp" />
-
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnCari"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:text="Cari Pembahasan"
-                    android:textSize="17sp"
+                    android:text="SiBunda"
+                    android:textSize="13sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:backgroundTint="@color/main_pink"
-                    app:cornerRadius="16dp" />
-
+                    android:background="@drawable/bg_label_pink"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp" />
 
             </LinearLayout>
 
-
-        </com.google.android.material.card.MaterialCardView>
-
-
-        <!-- Judul List -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hasil Pembahasan"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_dark_pink"
-            android:layout_marginTop="22dp"
-            android:layout_marginBottom="10dp" />
-
-
-        <!-- Card List -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="6dp"
-            app:strokeColor="@color/stroke_pink"
-            app:strokeWidth="1dp"
-            android:backgroundTint="@color/bg_container_pink">
-
-
-            <ListView
-                android:id="@+id/lvPembahasan"
+            <!-- CARD HASIL -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@color/stroke_pink"
-                android:dividerHeight="1dp"
-                android:padding="8dp"
-                android:background="@color/bg_container_pink" />
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/bg_container_pink"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp"
+                app:strokeColor="@color/stroke_pink"
+                app:strokeWidth="1dp">
 
+                <LinearLayout
+                    android:id="@+id/containerPembahasan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
 
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/tvKosong"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Silakan pilih umur balita terlebih dahulu untuk menampilkan pembahasan gizi."
+                        android:textSize="14sp"
+                        android:textColor="@color/text_gray"
+                        android:gravity="center"
+                        android:padding="18dp"
+                        android:lineSpacingExtra="3dp" />
 
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
 
     </LinearLayout>
-
 
 </ScrollView>
