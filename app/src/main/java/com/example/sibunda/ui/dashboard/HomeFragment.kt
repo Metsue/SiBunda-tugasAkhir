@@ -5,9 +5,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.sibunda.R
+import com.example.sibunda.core.utils.AgendaDataDummy
 import com.example.sibunda.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -15,7 +17,31 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
 
+        tampilkanAgendaDiDashboard()
         setupNavigation()
+    }
+
+    private fun tampilkanAgendaDiDashboard() {
+        val agenda = AgendaDataDummy.getAgendaTerdekat()
+
+        if (agenda != null) {
+            binding.tvTanggalAgendaHome.text =
+                "Tanggal: ${AgendaDataDummy.formatTanggalIndonesia(agenda.tanggal)}"
+
+            binding.tvJudulAgendaHome.text =
+                agenda.judul.uppercase()
+
+            binding.tvLokasiAgendaHome.text =
+                "Lokasi: ${agenda.lokasi}"
+        } else {
+            binding.tvTanggalAgendaHome.text = "Tanggal: -"
+            binding.tvJudulAgendaHome.text = "Belum ada agenda posyandu"
+            binding.tvLokasiAgendaHome.text = "Lokasi: -"
+        }
+
+        binding.cardInfoAgenda.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_agenda)
+        }
     }
 
     private fun setupNavigation() {

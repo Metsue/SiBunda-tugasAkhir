@@ -1,64 +1,222 @@
 package com.example.sibunda.ui.agenda
 
+import android.graphics.Color
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
-import android.widget.CalendarView
+import android.widget.GridLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.sibunda.R
+import com.example.sibunda.core.utils.AgendaDataDummy
+import com.example.sibunda.databinding.FragmentAgendaBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 class AgendaFragment : Fragment(R.layout.fragment_agenda) {
 
-    private lateinit var calendarView: CalendarView
-    private lateinit var txtTanggal: TextView
-    private lateinit var txtBulan: TextView
-    private lateinit var txtTahun: TextView
-    private lateinit var txtInfo: TextView
+    private var _binding: FragmentAgendaBinding? = null
+    private val binding get() = _binding!!
 
-    private val dataAgenda = mapOf(
-        "2026-05-17" to "Hari Pemeriksaan Balita",
-        "2026-05-20" to "Jadwal Imunisasi Campak",
-        "2026-06-05" to "Pemberian Vitamin A"
-    )
+    private val calendarAktif: Calendar = Calendar.getInstance()
+    private val tanggalDipilih: Calendar = Calendar.getInstance()
+
+    private val localeIndonesia = Locale("id", "ID")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentAgendaBinding.bind(view)
 
-        calendarView = view.findViewById(R.id.calendarView)
-        txtTanggal = view.findViewById(R.id.txtTanggal)
-        txtBulan = view.findViewById(R.id.txtBulan)
-        txtTahun = view.findViewById(R.id.txtTahun)
-        txtInfo = view.findViewById(R.id.txtInfo)
+        tampilkanHeaderHariIni()
+        buatHeaderHari()
+        tampilkanKalender()
 
-        val calendar = Calendar.getInstance()
-        updateTanggalDanInfo(calendar)
+        binding.btnPrevMonth.setOnClickListener {
+            calendarAktif.add(Calendar.MONTH, -1)
+            tampilkanKalender()
+        }
 
-        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val selectedCalendar = Calendar.getInstance()
-            selectedCalendar.set(year, month, dayOfMonth)
-            updateTanggalDanInfo(selectedCalendar)
+        binding.btnNextMonth.setOnClickListener {
+            calendarAktif.add(Calendar.MONTH, 1)
+            tampilkanKalender()
+        }
+
+        binding.btnBulanIni.setOnClickListener {
+            calendarAktif.timeInMillis = System.currentTimeMillis()
+            tanggalDipilih.timeInMillis = System.currentTimeMillis()
+            tampilkanHeaderHariIni()
+            tampilkanKalender()
         }
     }
 
-    private fun updateTanggalDanInfo(calendar: Calendar) {
-        val tanggal = SimpleDateFormat("dd", Locale.getDefault()).format(calendar.time)
-        val bulan = SimpleDateFormat("MMMM", Locale("id", "ID")).format(calendar.time)
-        val tahun = SimpleDateFormat("yyyy", Locale.getDefault()).format(calendar.time)
+    private fun tampilkanHeaderHariIni() {
+        val tanggal = SimpleDateFormat("dd", Locale.getDefault()).format(tanggalDipilih.time)
+        val bulan = SimpleDateFormat("MMMM", localeIndonesia).format(tanggalDipilih.time)
+        val tahun = SimpleDateFormat("yyyy", Locale.getDefault()).format(tanggalDipilih.time)
 
-        txtTanggal.text = tanggal
-        txtBulan.text = bulan
-        txtTahun.text = tahun
+        binding.txtTanggal.text = tanggal
+        binding.txtBulan.text = bulan
+        binding.txtTahun.text = tahun
 
-        val keyTanggal = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
-        val agendaHariIni = dataAgenda[keyTanggal]
+        updateInfoAgenda(tanggalDipilih)
+    }
 
-        if (agendaHariIni != null) {
-            txtInfo.text = "$tanggal $bulan:\n$agendaHariIni"
-        } else {
-            txtInfo.text = "$tanggal $bulan:\nTidak ada agenda kegiatan"
+    private fun buatHeaderHari() {
+        binding.gridHari.removeAllViews()
+
+        val namaHari = listOf("M", "S", "S", "R", "K", "J", "S")
+
+        namaHari.forEach { hari ->
+            val textView = TextView(requireContext()).apply {
+                text = hari
+                gravity = Gravity.CENTER
+                textSize = 13f
+                setTextColor(Color.DKGRAY)
+                layoutParams = GridLayout.LayoutParams().apply {
+                    width = 0
+                    height = 42
+                    columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
+                }
+            }
+
+            binding.gridHari.addView(textView)
         }
+    }
+
+    private fun tampilkanKalender() {
+        binding.gridKalender.removeAllViews()
+
+        val namaBulan = SimpleDateFormat("MMMM yyyy", localeIndonesia).format(calendarAktif.time)
+        binding.txtNamaBulan.text = namaBulan
+
+        val calendarBulan = calendarAktif.clone() as Calendar
+        calendarBulan.set(Calendar.DAY_OF_MONTH, 1)
+
+        val jumlahHariBulanIni = calendarBulan.getActualMaximum(Calendar.DAY_OF_MONTH)
+
+        var hariPertama = calendarBulan.get(Calendar.DAY_OF_WEEK)
+
+        // Ubah supaya Senin menjadi awal minggu
+        hariPertama = if (hariPertama == Calendar.SUNDAY) {
+            7
+        } else {
+            hariPertama - 1
+        }
+
+        // Kotak kosong sebelum tanggal 1
+        for (i in 1 until hariPertama) {
+            tambahKotakKosong()
+        }
+
+        for (tanggal in 1..jumlahHariBulanIni) {
+            val calendarTanggal = calendarAktif.clone() as Calendar
+            calendarTanggal.set(Calendar.DAY_OF_MONTH, tanggal)
+
+            val tanggalKey = formatKeyTanggal(calendarTanggal)
+            val adaAgenda = AgendaDataDummy.getAgendaByTanggal(tanggalKey) != null
+            val isSelected = samaTanggal(calendarTanggal, tanggalDipilih)
+
+            tambahTanggal(tanggal, adaAgenda, isSelected, calendarTanggal)
+        }
+    }
+
+    private fun tambahKotakKosong() {
+        val textView = TextView(requireContext()).apply {
+            text = ""
+            layoutParams = GridLayout.LayoutParams().apply {
+                width = 0
+                height = 58
+                columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
+            }
+        }
+
+        binding.gridKalender.addView(textView)
+    }
+
+    private fun tambahTanggal(
+        tanggal: Int,
+        adaAgenda: Boolean,
+        isSelected: Boolean,
+        calendarTanggal: Calendar
+    ) {
+        val textView = TextView(requireContext()).apply {
+            text = if (adaAgenda) {
+                "$tanggal\n•"
+            } else {
+                tanggal.toString()
+            }
+
+            gravity = Gravity.CENTER
+            textSize = 13f
+            setPadding(0, 4, 0, 4)
+
+            if (isSelected) {
+                setTextColor(Color.WHITE)
+                background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_tanggal_terpilih)
+            } else if (adaAgenda) {
+                setTextColor(Color.parseColor("#FF2D8D"))
+                background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_tanggal_agenda)
+            } else {
+                setTextColor(Color.DKGRAY)
+                background = null
+            }
+
+            layoutParams = GridLayout.LayoutParams().apply {
+                width = 0
+                height = 58
+                columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
+                setMargins(3, 3, 3, 3)
+            }
+
+            setOnClickListener {
+                tanggalDipilih.timeInMillis = calendarTanggal.timeInMillis
+                tampilkanHeaderHariIni()
+                tampilkanKalender()
+            }
+        }
+
+        binding.gridKalender.addView(textView)
+    }
+
+    private fun updateInfoAgenda(calendar: Calendar) {
+        val keyTanggal = formatKeyTanggal(calendar)
+        val tanggalIndo = AgendaDataDummy.formatTanggalIndonesia(keyTanggal)
+        val agenda = AgendaDataDummy.getAgendaByTanggal(keyTanggal)
+
+        if (agenda != null) {
+            binding.txtInfo.text = """
+                $tanggalIndo
+
+                ${agenda.judul}
+
+                Lokasi:
+                ${agenda.lokasi}
+
+                ${agenda.keterangan}
+            """.trimIndent()
+        } else {
+            binding.txtInfo.text = """
+                $tanggalIndo
+
+                Tidak ada agenda kegiatan
+            """.trimIndent()
+        }
+    }
+
+    private fun formatKeyTanggal(calendar: Calendar): String {
+        return SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
+    }
+
+    private fun samaTanggal(a: Calendar, b: Calendar): Boolean {
+        return a.get(Calendar.YEAR) == b.get(Calendar.YEAR) &&
+                a.get(Calendar.MONTH) == b.get(Calendar.MONTH) &&
+                a.get(Calendar.DAY_OF_MONTH) == b.get(Calendar.DAY_OF_MONTH)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

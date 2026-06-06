@@ -8,9 +8,11 @@
     <string name="riwayat_berat_dan_tinggi_badan">Riwayat berat dan tinggi badan</string>
     <string name="riwayat_data_balita">Riwayat Data Balita</string>
     <string name="back">Kembali</string>
+    <string name="menu">Menu</string>
 
     <!-- Home strings -->
-    <string name="welcome">Selamat Datang</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="halo_bunda_prans">Halo Bunda, Prans</string>
     <string name="informasi_agenda">Informasi Agenda</string>
     <string name="cek_gizi_balita">Cek Gizi Balita</string>
     <string name="konsultasi_ahli_gizi">Konsultasi Ahli Gizi</string>
