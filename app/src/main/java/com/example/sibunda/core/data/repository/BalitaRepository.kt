@@ -14,29 +14,26 @@ class BalitaRepository(
         umur: Int,
         berat: Double,
         tinggi: Double,
-        status: String
+        status: String,
+        tanggalPeriksa: Long
     ) {
-        // 1. CEK ATAU BUAT IBU
         val existingIbu = dao.getIbuByNama(namaIbu)
         val ibuId = existingIbu?.id ?: dao.insertIbu(Ibu(namaIbu = namaIbu)).toInt()
 
-        // 2. CEK ATAU BUAT/UPDATE BALITA
         val existingBalita = dao.getBalitaByNama(namaAnak, ibuId)
-        
+
         val balitaId = if (existingBalita != null) {
-            // Update data terbaru ke tabel balita agar sinkron dengan list
             dao.insertBalita(
                 existingBalita.copy(
                     umur = umur,
                     berat = berat,
                     tinggi = tinggi,
                     statusgizi = status,
-                    tanggal = System.currentTimeMillis()
+                    tanggal = tanggalPeriksa
                 )
             )
             existingBalita.id
         } else {
-            // Insert balita baru
             dao.insertBalita(
                 Balita(
                     ibuId = ibuId,
@@ -44,12 +41,12 @@ class BalitaRepository(
                     umur = umur,
                     berat = berat,
                     tinggi = tinggi,
-                    statusgizi = status
+                    statusgizi = status,
+                    tanggal = tanggalPeriksa
                 )
             ).toInt()
         }
 
-        // 3. TAMBAH KE RIWAYAT PERTUMBUHAN
         dao.insertPertumbuhan(
             Pertumbuhan(
                 balitaId = balitaId,
@@ -57,7 +54,8 @@ class BalitaRepository(
                 umur = umur,
                 berat = berat,
                 tinggi = tinggi,
-                statusgizi = status
+                statusgizi = status,
+                tanggal = tanggalPeriksa
             )
         )
     }

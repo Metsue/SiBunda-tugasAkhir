@@ -59,12 +59,15 @@ dependencies {
     // MPAndroidChart untuk Grafik Pertumbuhan
     implementation(libs.mpandroidchart)
 
-    //download pdf
-    implementation("com.itextpdf:itext7-core:7.1.15")
+    // Download PDF (iText 7.2.5)
+    val itextVersion = "7.2.5"
+    implementation("com.itextpdf:kernel:$itextVersion")
+    implementation("com.itextpdf:layout:$itextVersion")
+    implementation("com.itextpdf:io:$itextVersion")
+
     // Lifecycle (ViewModel, LiveData)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

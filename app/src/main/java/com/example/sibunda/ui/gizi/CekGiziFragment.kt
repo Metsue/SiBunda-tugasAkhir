@@ -13,15 +13,26 @@ import com.example.sibunda.core.data.local.entity.Balita
 import com.example.sibunda.core.utils.Constants
 import com.example.sibunda.databinding.FragmentCekGiziBinding
 import com.example.sibunda.ui.kelola_pertumbuhan.BalitaViewModel
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class CekGiziFragment : Fragment() {
+
     private var _binding: FragmentCekGiziBinding? = null
     private val binding get() = _binding!!
+
     private val viewmodel: BalitaViewModel by viewModels()
     private var listBalita: List<Balita> = emptyList()
 
+    private var tanggalPeriksaMillis: Long = System.currentTimeMillis()
+
+    private val formatTanggal = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCekGiziBinding.inflate(inflater, container, false)
@@ -31,9 +42,15 @@ class CekGiziFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sharedPref = requireActivity().getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE)
-        val namaIbu = sharedPref.getString("KEY_USERNAME", "Bunda") ?: "Bunda"
+        val sharedPref = requireActivity().getSharedPreferences(
+            Constants.PREFS_NAME,
+            Context.MODE_PRIVATE
+        )
 
+        val namaIbu = sharedPref.getString(Constants.KEY_NAMA, "Bunda") ?: "Bunda"
+
+        setTanggalHariIni()
+        setupDatePicker()
         setupBalitaSelection(namaIbu)
 
         binding.btnHitung.setOnClickListener {
@@ -45,22 +62,61 @@ class CekGiziFragment : Fragment() {
         }
     }
 
+    private fun setTanggalHariIni() {
+        tanggalPeriksaMillis = System.currentTimeMillis()
+        binding.etTanggalPeriksa.setText(formatTanggal.format(Date(tanggalPeriksaMillis)))
+    }
+
+    private fun setupDatePicker() {
+        binding.etTanggalPeriksa.setOnClickListener {
+            tampilkanDatePicker()
+        }
+
+        binding.etTanggalPeriksa.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                tampilkanDatePicker()
+            }
+        }
+    }
+
+    private fun tampilkanDatePicker() {
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("Pilih Tanggal Pemeriksaan")
+            .setSelection(tanggalPeriksaMillis)
+            .build()
+
+        datePicker.addOnPositiveButtonClickListener { selection ->
+            tanggalPeriksaMillis = selection
+            binding.etTanggalPeriksa.setText(formatTanggal.format(Date(selection)))
+        }
+
+        datePicker.show(parentFragmentManager, "DATE_PICKER_PEMERIKSAAN")
+    }
+
     private fun setupBalitaSelection(namaIbu: String) {
         viewmodel.getBalitaByMother(namaIbu).observe(viewLifecycleOwner) { data ->
             listBalita = data
             val names = data.map { it.nama }
-            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, names)
+            val adapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                names
+            )
             binding.acNamaBalita.setAdapter(adapter)
         }
 
         binding.acNamaBalita.setOnItemClickListener { parent, _, position, _ ->
             val selectedName = parent.getItemAtPosition(position) as String
             val balita = listBalita.find { it.nama == selectedName }
+
             balita?.let {
+                tanggalPeriksaMillis = it.tanggal
+                binding.etTanggalPeriksa.setText(formatTanggal.format(Date(it.tanggal)))
                 binding.etUmur.setText(it.umur.toString())
                 binding.etBerat.setText(it.berat.toString())
                 binding.etTinggi.setText(it.tinggi.toString())
-                binding.tvHasil.text = "Data terakhir ditemukan.\nStatus Gizi Terakhir: ${it.statusgizi}"
+                binding.tvHasil.text =
+                    "Data terakhir ditemukan.\nTanggal: ${formatTanggal.format(Date(it.tanggal))}\nStatus Gizi Terakhir: ${it.statusgizi}"
             }
         }
     }
@@ -70,6 +126,7 @@ class CekGiziFragment : Fragment() {
         binding.etUmur.setText("")
         binding.etBerat.setText("")
         binding.etTinggi.setText("")
+        setTanggalHariIni()
         binding.tvHasil.text = "Mode: Tambah Anak Baru"
         binding.acNamaBalita.requestFocus()
     }
@@ -79,18 +136,45 @@ class CekGiziFragment : Fragment() {
         val umurstr = binding.etUmur.text.toString().trim()
         val beratstr = binding.etBerat.text.toString().trim()
         val tinggistr = binding.etTinggi.text.toString().trim()
+        val tanggalStr = binding.etTanggalPeriksa.text.toString().trim()
 
-        if (nama.isEmpty() || umurstr.isEmpty() || beratstr.isEmpty() || tinggistr.isEmpty()) {
+        if (
+            nama.isEmpty() ||
+            umurstr.isEmpty() ||
+            beratstr.isEmpty() ||
+            tinggistr.isEmpty() ||
+            tanggalStr.isEmpty()
+        ) {
             Toast.makeText(requireContext(), "Semua data harus diisi", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val umur = umurstr.toIntOrNull() ?: 0
-        val berat = beratstr.toDoubleOrNull() ?: 0.0
-        val tinggi = tinggistr.toDoubleOrNull() ?: 0.0
+        val umur = umurstr.toIntOrNull()
+        val berat = beratstr.toDoubleOrNull()
+        val tinggi = tinggistr.toDoubleOrNull()
+
+        if (umur == null || umur <= 0) {
+            binding.etUmur.error = "Umur tidak valid"
+            binding.etUmur.requestFocus()
+            return
+        }
+
+        if (berat == null || berat <= 0.0) {
+            binding.etBerat.error = "Berat badan tidak valid"
+            binding.etBerat.requestFocus()
+            return
+        }
+
+        if (tinggi == null || tinggi <= 0.0) {
+            binding.etTinggi.error = "Tinggi badan tidak valid"
+            binding.etTinggi.requestFocus()
+            return
+        }
 
         val statusgizi = viewmodel.hitungStatusGizi(berat, umur)
-        binding.tvHasil.text = "Status Gizi: $statusgizi"
+
+        binding.tvHasil.text =
+            "Status Gizi: $statusgizi\nTanggal Pemeriksaan: ${formatTanggal.format(Date(tanggalPeriksaMillis))}"
 
         viewmodel.tambahData(
             namaIbu = namaIbu,
@@ -98,10 +182,15 @@ class CekGiziFragment : Fragment() {
             umur = umur,
             berat = berat,
             tinggi = tinggi,
-            status = statusgizi
+            status = statusgizi,
+            tanggalPeriksa = tanggalPeriksaMillis
         )
 
-        Toast.makeText(requireContext(), "Data berhasil disinkronkan ke Kelola Pertumbuhan", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            requireContext(),
+            "Data pemeriksaan berhasil disimpan",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onDestroyView() {

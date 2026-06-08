@@ -7,19 +7,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface BalitaDao {
 
-    // ======================
-    // IBU
-    // ======================
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertIbu(ibu: Ibu): Long
 
     @Query("SELECT * FROM ibu WHERE namaIbu = :nama LIMIT 1")
     suspend fun getIbuByNama(nama: String): Ibu?
-
-    // ======================
-    // BALITA
-    // ======================
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBalita(balita: Balita): Long
@@ -49,13 +41,9 @@ interface BalitaDao {
     @Query("SELECT * FROM balita WHERE nama = :nama AND ibuId = :ibuId LIMIT 1")
     suspend fun getBalitaByNama(nama: String, ibuId: Int): Balita?
 
-    // ======================
-    // PERTUMBUHAN
-    // ======================
-
     @Insert
     suspend fun insertPertumbuhan(pertumbuhan: Pertumbuhan)
 
-    @Query("SELECT * FROM pertumbuhan WHERE balitaId = :balitaId ORDER BY umur ASC")
+    @Query("SELECT * FROM pertumbuhan WHERE balitaId = :balitaId ORDER BY tanggal ASC")
     fun getRiwayatPertumbuhan(balitaId: Int): Flow<List<Pertumbuhan>>
 }

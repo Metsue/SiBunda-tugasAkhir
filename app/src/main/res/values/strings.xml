@@ -19,6 +19,11 @@
     <string name="materi_edukasi">Materi Edukasi</string>
     <string name="monitoring_pola_makan">Monitoring Pola Makan</string>
     <string name="agenda_posyandu">Agenda Posyandu</string>
+    <string name="halo_user">Halo %1$s</string>
+    <string name="format_tanggal">Tanggal: %1$s</string>
+    <string name="format_lokasi">Lokasi: %1$s</string>
+    <string name="belum_ada_agenda">Belum ada agenda posyandu</string>
+    <string name="strip">-</string>
 
     <!-- Ebook strings -->
     <string name="ebook_edukasi">Ebook Edukasi</string>

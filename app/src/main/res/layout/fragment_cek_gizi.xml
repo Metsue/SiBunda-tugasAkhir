@@ -34,7 +34,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="22dp"
             app:cardElevation="8dp"
             app:strokeColor="@color/stroke_pink"
             app:strokeWidth="1dp"
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="18dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -68,7 +68,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
-                            android:textColor="@color/text_dark_pink" />
+                            android:textColor="@color/text_dark_pink"
+                            android:textSize="16sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,16 +80,42 @@
                         android:layout_height="wrap_content"
                         android:text="Anak Baru"
                         android:textColor="@color/main_pink"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
                 </LinearLayout>
 
-                <!-- Umur -->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tanggal Pemeriksaan"
+                    android:layout_marginTop="8dp"
+                    app:boxStrokeColor="@color/main_pink"
+                    app:hintTextColor="@color/text_dark_pink"
+                    app:boxBackgroundColor="@color/bg_container_pink"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@android:drawable/ic_menu_my_calendar"
+                    app:endIconTint="@color/main_pink">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etTanggalPeriksa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:inputType="none"
+                        android:textColor="@color/text_dark_pink"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Umur (bulan)"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
                     app:boxStrokeColor="@color/main_pink"
                     app:hintTextColor="@color/text_dark_pink"
                     app:boxBackgroundColor="@color/bg_container_pink">
@@ -98,11 +125,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:textColor="@color/text_dark_pink" />
+                        android:textColor="@color/text_dark_pink"
+                        android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Berat -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -118,11 +145,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
-                        android:textColor="@color/text_dark_pink" />
+                        android:textColor="@color/text_dark_pink"
+                        android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Tinggi -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -138,7 +165,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
-                        android:textColor="@color/text_dark_pink" />
+                        android:textColor="@color/text_dark_pink"
+                        android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,13 +174,13 @@
                     android:id="@+id/btnHitung"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="22dp"
                     android:text="Hitung &amp; Simpan Status Gizi"
-                    android:textColor="@color/white"
+                    android:textSize="17sp"
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textColor="@color/white"
                     android:backgroundTint="@color/main_pink"
-                    app:cornerRadius="16dp" />
+                    app:cornerRadius="18dp" />
 
             </LinearLayout>
 
@@ -161,9 +189,9 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="22dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="6dp"
+            app:cardElevation="4dp"
             app:strokeColor="@color/stroke_pink"
             app:strokeWidth="1dp"
             android:backgroundTint="@color/soft_pink">
@@ -172,14 +200,15 @@
                 android:id="@+id/tvHasil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hasil akan tampil di sini"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:text="Hasil status gizi akan tampil di sini"
                 android:textColor="@color/text_dark_pink"
+                android:textSize="17sp"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:padding="20dp" />
 
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
+
 </ScrollView>

@@ -1,64 +1,76 @@
 package com.example.sibunda.ui.konsultasi
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.sibunda.R
 import com.example.sibunda.databinding.FragmentKonsultasiBinding
 
-class KonsultasiFragment : Fragment() {
+class KonsultasiFragment : Fragment(R.layout.fragment_konsultasi) {
 
     private var _binding: FragmentKonsultasiBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentKonsultasiBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    data class KonsultasiItem(
+        val jenis: String,
+        val deskripsi: String,
+        val namaDokter: String,
+        val nomorWhatsapp: String,
+        val jamLayanan: String
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentKonsultasiBinding.bind(view)
 
-        binding.btnGiziBalita.setOnClickListener {
-            bukaKontakDokter(
-                jenis = "Konsultasi Gizi Balita",
-                dokter = "Dr. Expransa Saputra",
-                nomor = "6281549110563"
-            )
+        val konsultasiGizi = KonsultasiItem(
+            jenis = "Konsultasi Gizi Balita",
+            deskripsi = "Layanan konsultasi untuk membahas status gizi balita, kebutuhan nutrisi harian, serta evaluasi hasil pemeriksaan gizi.",
+            namaDokter = "dr. Expransa Saputra",
+            nomorWhatsapp = "6281549110563",
+            jamLayanan = "Senin - Jumat, 08.00 - 16.00 WIB"
+        )
+
+        val konsultasiStunting = KonsultasiItem(
+            jenis = "Konsultasi Stunting",
+            deskripsi = "Layanan konsultasi untuk memantau pertumbuhan anak, mengenali risiko stunting, dan memperoleh saran tindak lanjut.",
+            namaDokter = "dr. Nabila Rahmawati",
+            nomorWhatsapp = "6281234567890",
+            jamLayanan = "Senin - Jumat, 09.00 - 15.00 WIB"
+        )
+
+        val konsultasiPolaMakan = KonsultasiItem(
+            jenis = "Konsultasi Pola Makan",
+            deskripsi = "Layanan konsultasi untuk pengaturan jadwal makan, variasi menu, serta pola pemberian makanan yang sesuai usia balita.",
+            namaDokter = "dr. Siti Azzahra Putri",
+            nomorWhatsapp = "6289876543210",
+            jamLayanan = "Senin - Sabtu, 08.30 - 14.30 WIB"
+        )
+
+        binding.cardKonsultasiGiziBalita.setOnClickListener {
+            bukaKontakDokter(konsultasiGizi)
         }
 
-        binding.btnStunting.setOnClickListener {
-            bukaKontakDokter(
-                jenis = "Konsultasi Stunting",
-                dokter = "Dr. Muhammad Indra",
-                nomor = "6283137970669"
-            )
+        binding.cardKonsultasiStunting.setOnClickListener {
+            bukaKontakDokter(konsultasiStunting)
         }
 
-        binding.btnPolaMakan.setOnClickListener {
-            bukaKontakDokter(
-                jenis = "Konsultasi Pola Makan",
-                dokter = "Dr. Muhammad Rif'at Maulana",
-                nomor = "6282173180602"
-            )
+        binding.cardKonsultasiPolaMakan.setOnClickListener {
+            bukaKontakDokter(konsultasiPolaMakan)
         }
     }
 
-    private fun bukaKontakDokter(jenis: String, dokter: String, nomor: String) {
+    private fun bukaKontakDokter(item: KonsultasiItem) {
         val bundle = Bundle().apply {
-            putString("jenis", jenis)
-            putString("dokter", dokter)
-            putString("nomor", nomor)
+            putString("jenis_konsultasi", item.jenis)
+            putString("deskripsi_konsultasi", item.deskripsi)
+            putString("nama_dokter", item.namaDokter)
+            putString("nomor_whatsapp", item.nomorWhatsapp)
+            putString("jam_layanan", item.jamLayanan)
         }
-        // Use Navigation Component as defined in nav_graph.xml
-        findNavController().navigate(R.id.action_konsultasi_to_kontak, bundle)
+
+        findNavController().navigate(R.id.kontakDokterFragment, bundle)
     }
 
     override fun onDestroyView() {

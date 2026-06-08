@@ -2,9 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/soft_pink">
+    android:background="@color/soft_pink"
+    tools:context=".ui.settings.SettingsFragment">
 
     <TextView
         android:id="@+id/tvHeaderSettings"
@@ -15,6 +17,7 @@
         android:text="Pengaturan Aplikasi"
         android:textColor="@color/rose_pink"
         android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,24 +25,26 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHeaderSettings">
+        android:paddingBottom="110dp"
+        app:layout_constraintTop_toBottomOf="@id/tvHeaderSettings"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="24dp">
+            android:orientation="vertical">
 
+            <!-- CARD USER -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardUserSettings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="18dp"
                 app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="2dp"
+                app:cardCornerRadius="26dp"
+                app:cardElevation="4dp"
                 app:strokeWidth="0dp">
 
                 <LinearLayout
@@ -47,153 +52,227 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:padding="20dp">
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/ivProfilePicture"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_profile"
-                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        app:cardBackgroundColor="#FFE5F1"
+                        app:cardCornerRadius="36dp"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            android:id="@+id/ivProfilePicture"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="18dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_profile"
+                            app:tint="@color/rose_pink"
+                            android:contentDescription="Foto profil" />
+
+                    </com.google.android.material.card.MaterialCardView>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="18dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvSettingsName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
-                            android:text="Bunda Prans"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+                            android:text="Bunda"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            tools:text="Ibu Nanda" />
 
                         <TextView
+                            android:id="@+id/tvSettingsEmail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:fontFamily="sans-serif"
-                            android:text="bunda.prans@email.com"
+                            android:text="email@example.com"
                             android:textColor="#757575"
-                            android:textSize="13sp" />
+                            android:textSize="14sp"
+                            tools:text="nanda@gmail.com" />
+
                     </LinearLayout>
+
                 </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- CARD MENU -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
+                app:cardCornerRadius="26dp"
+                app:cardElevation="3dp"
                 app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:paddingVertical="8dp">
 
                     <LinearLayout
                         android:id="@+id/btnMenuProfile"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="64dp"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="20dp">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:fontFamily="sans-serif-medium"
                             android:text="Ubah Profil Bunda"
-                            android:textColor="@color/black"
+                            android:textColor="@android:color/black"
                             android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textColor="#B0B0B0"
+                            android:textSize="26sp" />
+
                     </LinearLayout>
 
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E0E0E0" android:layout_marginHorizontal="16dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:background="#EEEEEE" />
 
                     <LinearLayout
                         android:id="@+id/btnMenuTheme"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="64dp"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="20dp">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:fontFamily="sans-serif-medium"
                             android:text="Ganti Tema Warna"
-                            android:textColor="@color/black"
+                            android:textColor="@android:color/black"
                             android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textColor="#B0B0B0"
+                            android:textSize="26sp" />
+
                     </LinearLayout>
 
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E0E0E0" android:layout_marginHorizontal="16dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:background="#EEEEEE" />
 
                     <LinearLayout
                         android:id="@+id/btnMenuNotification"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="64dp"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="20dp">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:fontFamily="sans-serif-medium"
                             android:text="Notifikasi Agenda &amp; Posyandu"
-                            android:textColor="@color/black"
+                            android:textColor="@android:color/black"
                             android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textColor="#B0B0B0"
+                            android:textSize="26sp" />
+
                     </LinearLayout>
 
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E0E0E0" android:layout_marginHorizontal="16dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:background="#EEEEEE" />
 
                     <LinearLayout
                         android:id="@+id/btnMenuAbout"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="64dp"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="20dp">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:fontFamily="sans-serif-medium"
                             android:text="Tentang Aplikasi SiBunda"
-                            android:textColor="@color/black"
+                            android:textColor="@android:color/black"
                             android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textColor="#B0B0B0"
+                            android:textSize="26sp" />
+
                     </LinearLayout>
 
                 </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- LOGOUT -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="30dp"
                 android:backgroundTint="@color/rose_pink"
                 android:fontFamily="sans-serif-black"
                 android:text="KELUAR AKUN"
+                android:textColor="@android:color/white"
                 android:textSize="15sp"
-                app:cornerRadius="16dp"
-                app:elevation="2dp" />
+                android:textStyle="bold"
+                app:cornerRadius="20dp" />
 
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

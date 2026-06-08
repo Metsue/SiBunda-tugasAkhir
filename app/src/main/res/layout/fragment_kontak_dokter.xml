@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_pink_soft">
-
+    android:background="@color/bg_pink_soft"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,27 +12,35 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-
         <TextView
+            android:id="@+id/tvTitleKontak"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kontak Dokter"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_dark_pink"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp" />
+            android:text="Kontak Dokter"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/tvSubtitleKontak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="Informasi layanan konsultasi yang dipilih"
+            android:textColor="@color/text_gray"
+            android:textSize="14sp" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/bg_container_pink"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
             app:strokeColor="@color/stroke_pink"
-            app:strokeWidth="1dp"
-            android:backgroundTint="@color/bg_container_pink">
-
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,84 +48,151 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:background="@drawable/bg_home_soft_circle"
+                        android:gravity="center"
+                        android:text="👩‍⚕️"
+                        android:textSize="28sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvLabelJenis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jenis Konsultasi"
+                            android:textColor="@color/text_gray"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tvJenisKonsultasi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="Konsultasi Gizi Balita"
+                            android:textColor="@color/text_dark_pink"
+                            android:textSize="21sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvDeskripsiKonsultasi"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jenis Konsultasi"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_gray" />
-
-
-                <TextView
-                    android:id="@+id/tvJenis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Konsultasi Gizi"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_dark_pink"
-                    android:layout_marginBottom="18dp" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nama Dokter"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_gray" />
-
-
-                <TextView
-                    android:id="@+id/tvDokter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dr. Konsultan Gizi"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_dark_pink"
-                    android:layout_marginBottom="18dp" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nomor WhatsApp"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_gray" />
-
-
-                <TextView
-                    android:id="@+id/tvNomor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="+6200000000000"
-                    android:textSize="18sp"
+                    android:layout_marginTop="18dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Deskripsi konsultasi"
                     android:textColor="@color/text_gray"
-                    android:layout_marginBottom="28dp" />
+                    android:textSize="14sp" />
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/stroke_pink" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="Nama Dokter"
+                    android:textColor="@color/text_gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvNamaDokter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="dr. Expransa Saputra"
+                    android:textColor="@color/text_dark_pink"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="Nomor WhatsApp"
+                    android:textColor="@color/text_gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvNomorWhatsapp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="+6281549110563"
+                    android:textColor="@color/text_gray"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="Jam Layanan"
+                    android:textColor="@color/text_gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvJamLayanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Senin - Jumat, 08.00 - 16.00 WIB"
+                    android:textColor="@color/text_gray"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:cardBackgroundColor="@color/soft_pink"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="14dp"
+                        android:text="Silakan hubungi dokter pada jam layanan agar konsultasi dapat ditangani dengan lebih optimal."
+                        android:textColor="@color/text_dark_pink"
+                        android:textSize="13sp" />
+
+                </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnWhatsapp"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="22dp"
+                    android:backgroundTint="@color/main_pink"
                     android:text="Hubungi via WhatsApp"
+                    android:textColor="@color/white"
                     android:textSize="17sp"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/main_pink"
-                    app:cornerRadius="16dp" />
-
+                    app:cornerRadius="18dp" />
 
             </LinearLayout>
 
-
         </com.google.android.material.card.MaterialCardView>
 
-
     </LinearLayout>
-</ScrollView>
 
+</ScrollView>

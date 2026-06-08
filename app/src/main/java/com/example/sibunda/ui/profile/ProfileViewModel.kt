@@ -9,7 +9,8 @@ import com.example.sibunda.core.utils.Constants
 
 class ProfileViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val sharedPreferences = application.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE)
+    private val sharedPreferences =
+        application.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE)
 
     private val _namaIbu = MutableLiveData<String>()
     val namaIbu: LiveData<String> = _namaIbu
@@ -26,12 +27,11 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
     private val _alamatIbu = MutableLiveData<String>()
     val alamatIbu: LiveData<String> = _alamatIbu
 
-    // Fungsi untuk memuat data yang tersinkronisasi dari session login/register
     fun loadUserProfile() {
-        _namaIbu.value = sharedPreferences.getString("KEY_NAMA", "Bunda Prans")
-        _nikIbu.value = sharedPreferences.getString("KEY_NIK", "6371XXXXXXXXXXXX")
-        _usernameIbu.value = sharedPreferences.getString("KEY_USERNAME", "bunda.prans@email.com")
-        _teleponIbu.value = sharedPreferences.getString("KEY_TELEPON", "08XXXXXXXXXX")
-        _alamatIbu.value = sharedPreferences.getString("KEY_ALAMAT", "Kota Banjarmasin, Kalimantan Selatan")
+        _namaIbu.value = sharedPreferences.getString(Constants.KEY_NAMA, "Bunda")
+        _nikIbu.value = sharedPreferences.getString(Constants.KEY_NIK, "Belum diisi")
+        _usernameIbu.value = sharedPreferences.getString(Constants.KEY_USERNAME, "Belum login")
+        _teleponIbu.value = sharedPreferences.getString(Constants.KEY_TELEPON, "Belum diisi")
+        _alamatIbu.value = sharedPreferences.getString(Constants.KEY_ALAMAT, "Belum diisi")
     }
 }

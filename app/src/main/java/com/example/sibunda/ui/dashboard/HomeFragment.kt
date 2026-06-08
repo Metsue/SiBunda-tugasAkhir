@@ -1,11 +1,13 @@
 package com.example.sibunda.ui.dashboard
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.sibunda.R
 import com.example.sibunda.core.utils.AgendaDataDummy
+import com.example.sibunda.core.utils.Constants
 import com.example.sibunda.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -15,10 +17,32 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         _binding = FragmentHomeBinding.bind(view)
 
+        tampilkanNamaUser()
         tampilkanAgendaDiDashboard()
         setupNavigation()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (_binding != null) {
+            tampilkanNamaUser()
+            tampilkanAgendaDiDashboard()
+        }
+    }
+
+    private fun tampilkanNamaUser() {
+        val sharedPref = requireActivity().getSharedPreferences(
+            Constants.PREFS_NAME,
+            Context.MODE_PRIVATE
+        )
+
+        val nama = sharedPref.getString(Constants.KEY_NAMA, "Bunda") ?: "Bunda"
+
+        binding.tvSapaan.text = "Halo $nama"
     }
 
     private fun tampilkanAgendaDiDashboard() {

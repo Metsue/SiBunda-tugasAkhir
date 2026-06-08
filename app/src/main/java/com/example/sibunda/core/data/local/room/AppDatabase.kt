@@ -14,7 +14,7 @@ import com.example.sibunda.core.data.local.entity.*
         AgendaEntity::class,
         ChatEntity::class
     ],
-    version = 5,
+    version = 6,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
