@@ -3,311 +3,335 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F6F6">
+    android:background="@color/bg_pink_soft"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- HEADER -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:background="#FF2D8D"
+            android:layout_height="72dp"
+            android:background="@color/main_pink"
             android:gravity="center_vertical"
-            android:paddingHorizontal="16dp">
-
-            <ImageView
-                android:id="@+id/btnBack"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_menu"
-                app:tint="#FFFFFF"
-                android:contentDescription="@string/back" />
+            android:orientation="horizontal"
+            android:paddingHorizontal="18dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/btnBack"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:gravity="center"
+                android:text="‹"
+                android:textColor="@android:color/white"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:text="@string/ebook_edukasi"
-                android:textColor="#FFFFFF"
-                android:textSize="22sp"
+                android:layout_weight="1"
+                android:text="Ebook Edukasi"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/daftar_ebook"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:padding="20dp">
 
-        <!-- EBOOK 1 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardEbook1"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="18dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="6dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daftar Buku Edukasi"
+                android:textColor="#2F2A35"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Pilih buku panduan kesehatan dan gizi balita untuk dibaca langsung di aplikasi."
+                android:textColor="@color/text_gray"
+                android:textSize="14sp" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    app:cardBackgroundColor="#FFE5F1"
-                    app:cardCornerRadius="45dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="24dp"
-                        android:src="@drawable/ic_launcher_foreground"
-                        app:tint="#FF2D8D"
-                        android:contentDescription="@string/panduan_gizi_balita" />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:text="@string/panduan_gizi_balita"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/panduan_makanan_sehat"
-                    android:textColor="#888888"
-                    android:textSize="13sp"/>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- EBOOK 2 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardEbook2"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_margin="18dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="6dp">
-
-            <LinearLayout
+            <!-- EBOOK 1 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEbook1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/stroke_pink"
+                app:strokeWidth="1dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    app:cardBackgroundColor="#DDF8F5"
-                    app:cardCornerRadius="45dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="24dp"
-                        android:src="@drawable/ic_launcher_foreground"
-                        app:tint="#2EC4B6"
-                        android:contentDescription="@string/kesehatan_bayi" />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:text="@string/kesehatan_bayi"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="18dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/perawatan_bayi"
-                    android:textColor="#888888"
-                    android:textSize="13sp"/>
+                    <TextView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:background="@drawable/bg_home_soft_circle"
+                        android:gravity="center"
+                        android:text="📊"
+                        android:textSize="26sp" />
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-        </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="SSGI 2024 Dalam Angka"
+                            android:textColor="#2F2A35"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
-        <!-- EBOOK 3 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardEbook3"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_margin="18dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="6dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Data dan informasi status gizi balita di Indonesia."
+                            android:textColor="@color/text_gray"
+                            android:textSize="13sp" />
 
-            <LinearLayout
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baca"
+                        android:textColor="@color/main_pink"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- EBOOK 2 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEbook2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/stroke_pink"
+                app:strokeWidth="1dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    app:cardBackgroundColor="#FFE5F1"
-                    app:cardCornerRadius="45dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="24dp"
-                        android:src="@drawable/ic_launcher_foreground"
-                        app:tint="#FF2D8D"
-                        android:contentDescription="@string/imunisasi_anak" />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:text="@string/imunisasi_anak"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="18dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/jadwal_imunisasi"
-                    android:textColor="#888888"
-                    android:textSize="13sp"/>
+                    <TextView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:background="@drawable/bg_home_soft_circle"
+                        android:gravity="center"
+                        android:text="🩺"
+                        android:textSize="26sp" />
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-        </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Pedoman Gizi Buruk Balita"
+                            android:textColor="#2F2A35"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
-        <!-- EBOOK 4 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardEbook4"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_margin="18dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="6dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Panduan pencegahan dan tatalaksana gizi buruk pada balita."
+                            android:textColor="@color/text_gray"
+                            android:textSize="13sp" />
 
-            <LinearLayout
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baca"
+                        android:textColor="@color/main_pink"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- EBOOK 3 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEbook3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/stroke_pink"
+                app:strokeWidth="1dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    app:cardBackgroundColor="#DDF8F5"
-                    app:cardCornerRadius="45dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="24dp"
-                        android:src="@drawable/ic_launcher_foreground"
-                        app:tint="#2EC4B6"
-                        android:contentDescription="@string/tumbuh_kembang_anak" />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:text="@string/tumbuh_kembang_anak"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="18dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/panduan_perkembangan"
-                    android:textColor="#888888"
-                    android:textSize="13sp"/>
+                    <TextView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:background="@drawable/bg_home_soft_circle"
+                        android:gravity="center"
+                        android:text="📈"
+                        android:textSize="26sp" />
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-        </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Pedoman Pemantauan Pertumbuhan"
+                            android:textColor="#2F2A35"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
-        <!-- EBOOK 5 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardEbook5"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_margin="18dp"
-            android:layout_marginBottom="24dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="6dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Panduan pemantauan pertumbuhan balita secara rutin."
+                            android:textColor="@color/text_gray"
+                            android:textSize="13sp" />
 
-            <LinearLayout
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baca"
+                        android:textColor="@color/main_pink"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- EBOOK 4 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEbook4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/stroke_pink"
+                app:strokeWidth="1dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    app:cardBackgroundColor="#FFE5F1"
-                    app:cardCornerRadius="45dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="24dp"
-                        android:src="@drawable/ic_launcher_foreground"
-                        app:tint="#FF2D8D"
-                        android:contentDescription="@string/pencegahan_stunting" />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:text="@string/pencegahan_stunting"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="18dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/edukasi_stunting"
-                    android:textColor="#888888"
-                    android:textSize="13sp"/>
+                    <TextView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:background="@drawable/bg_home_soft_circle"
+                        android:gravity="center"
+                        android:text="🍱"
+                        android:textSize="26sp" />
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-        </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Buku Saku PMT Lokal Balita"
+                            android:textColor="#2F2A35"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Panduan PMT lokal bagi balita bermasalah gizi."
+                            android:textColor="@color/text_gray"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baca"
+                        android:textColor="@color/main_pink"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
 
     </LinearLayout>
 

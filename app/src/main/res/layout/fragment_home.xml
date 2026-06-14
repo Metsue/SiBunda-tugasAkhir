@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootHome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/soft_pink"
@@ -20,11 +21,12 @@
             android:orientation="vertical"
             android:padding="18dp">
 
-            <!-- HERO HEADER PINK -->
+            <!-- HERO HEADER IKUT WARNA TEMA -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardHeaderHome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:tag="keep_primary"
                 app:cardBackgroundColor="#F48FB1"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="6dp"
@@ -48,9 +50,10 @@
                             android:id="@+id/tvHeaderHome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:tag="on_primary"
                             android:fontFamily="sans-serif-black"
                             android:text="Selamat Datang"
-                            android:textColor="#2F2A35"
+                            android:textColor="@android:color/white"
                             android:textSize="23sp"
                             android:textStyle="bold" />
 
@@ -59,34 +62,39 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:tag="on_primary"
                             android:fontFamily="sans-serif-black"
                             android:text="Halo Bunda"
-                            android:textColor="#2F2A35"
+                            android:textColor="@android:color/white"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            tools:text="Halo Ibu Nanda" />
+                            tools:text="Halo Nanda" />
 
                         <TextView
                             android:id="@+id/tvSubSapaan"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
+                            android:tag="on_primary"
                             android:lineSpacingExtra="2dp"
                             android:text="Pantau gizi balita, jadwal posyandu, dan perkembangan anak dalam satu aplikasi."
-                            android:textColor="#4F4653"
+                            android:textColor="@android:color/white"
                             android:textSize="13sp" />
 
                     </LinearLayout>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardIconHeaderHome"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_marginStart="14dp"
+                        android:tag="keep_soft"
                         app:cardBackgroundColor="#FFD6E7"
                         app:cardCornerRadius="22dp"
                         app:cardElevation="0dp">
 
                         <ImageView
+                            android:id="@+id/ivHeaderProfile"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:contentDescription="Profil"
@@ -120,6 +128,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvLihatSemuaAgenda"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lihat Semua"
@@ -190,7 +199,7 @@
                             android:text="Tanggal: -"
                             android:textColor="#8A7F88"
                             android:textSize="13sp"
-                            tools:text="Tanggal: 10 Juni 2026" />
+                            tools:text="Tanggal: 17 Juni 2026" />
 
                         <TextView
                             android:id="@+id/tvJudulAgendaHome"
@@ -202,7 +211,7 @@
                             android:textColor="#2F2A35"
                             android:textSize="15sp"
                             android:textStyle="bold"
-                            tools:text="PEMERIKSAAN BERAT DAN TINGGI BADAN" />
+                            tools:text="PENYULUHAN GIZI BALITA" />
 
                         <TextView
                             android:id="@+id/tvLokasiAgendaHome"
@@ -212,7 +221,7 @@
                             android:text="Lokasi: -"
                             android:textColor="#6E6472"
                             android:textSize="13sp"
-                            tools:text="Lokasi: Posyandu Mawar" />
+                            tools:text="Lokasi: Balai Kelurahan" />
 
                     </LinearLayout>
 
@@ -222,6 +231,7 @@
 
             <!-- MENU TITLE -->
             <TextView
+                android:id="@+id/tvMenuLayananTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"

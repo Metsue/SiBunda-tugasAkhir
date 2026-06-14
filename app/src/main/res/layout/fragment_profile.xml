@@ -2,10 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/soft_pink">
+    android:background="@color/soft_pink"
+    tools:context=".ui.profile.ProfileFragment">
 
+    <!-- HEADER -->
     <TextView
         android:id="@+id/tvHeaderProfile"
         android:layout_width="wrap_content"
@@ -15,6 +18,7 @@
         android:text="Profil Bunda"
         android:textColor="@color/rose_pink"
         android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,43 +27,52 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
+        android:fillViewport="true"
         android:paddingHorizontal="20dp"
+        android:paddingBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHeaderProfile">
+        app:layout_constraintTop_toBottomOf="@id/tvHeaderProfile">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="24dp">
+            android:paddingBottom="28dp">
 
+            <!-- FOTO PROFIL -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvAvatar"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="22dp"
                 app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="60dp"
-                app:cardElevation="4dp"
-                app:strokeWidth="0dp">
+                app:cardCornerRadius="62.5dp"
+                app:cardElevation="5dp"
+                app:strokeColor="#F3D3E0"
+                app:strokeWidth="1dp">
 
                 <ImageView
-                    android:id="@+id/ivProfileAvatar"
+                    android:id="@+id/ivProfilePicture"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_profile" />
+                    android:contentDescription="Foto profil"
+                    android:padding="28dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_profile"
+                    tools:src="@drawable/ic_profile" />
+
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- CARD DATA PROFIL -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="0dp">
+                app:cardElevation="3dp"
+                app:strokeColor="#F3D3E0"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -67,6 +80,7 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
+                    <!-- NAMA -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,16 +88,20 @@
                         android:text="Nama Lengkap Bunda"
                         android:textColor="#757575"
                         android:textSize="12sp" />
+
                     <TextView
                         android:id="@+id/tvProfileName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="-"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="16dp"
                         android:fontFamily="sans-serif-black"
-                        android:layout_marginBottom="16dp"/>
+                        android:text="-"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        tools:text="Nanda" />
 
+                    <!-- NIK -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -91,16 +109,20 @@
                         android:text="NIK (Nomor Induk Kependudukan)"
                         android:textColor="#757575"
                         android:textSize="12sp" />
+
                     <TextView
                         android:id="@+id/tvProfileNik"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="-"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="16dp"
                         android:fontFamily="sans-serif-medium"
-                        android:layout_marginBottom="16dp"/>
+                        android:text="-"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        tools:text="1264694364694555" />
 
+                    <!-- EMAIL -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -108,16 +130,20 @@
                         android:text="Username / Email Akun"
                         android:textColor="#757575"
                         android:textSize="12sp" />
+
                     <TextView
                         android:id="@+id/tvProfileUsername"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="-"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="16dp"
                         android:fontFamily="sans-serif-medium"
-                        android:layout_marginBottom="16dp"/>
+                        android:text="-"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        tools:text="indramanarap@gmail.com" />
 
+                    <!-- TELEPON -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -125,16 +151,20 @@
                         android:text="Nomor Telepon"
                         android:textColor="#757575"
                         android:textSize="12sp" />
+
                     <TextView
                         android:id="@+id/tvProfilePhone"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="-"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="16dp"
                         android:fontFamily="sans-serif-medium"
-                        android:layout_marginBottom="16dp"/>
+                        android:text="-"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        tools:text="089999999999" />
 
+                    <!-- ALAMAT -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -142,18 +172,23 @@
                         android:text="Alamat Rumah"
                         android:textColor="#757575"
                         android:textSize="12sp" />
+
                     <TextView
                         android:id="@+id/tvProfileAddress"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="sans-serif-medium"
                         android:text="-"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/black"
                         android:textSize="15sp"
-                        android:fontFamily="sans-serif-medium"/>
+                        tools:text="Jl. Mahligai Rt01 Rw 01" />
 
                 </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- BUTTON EDIT -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEditProfile"
                 android:layout_width="match_parent"
@@ -162,11 +197,14 @@
                 android:backgroundTint="@color/rose_pink"
                 android:fontFamily="sans-serif-black"
                 android:text="UBAH DATA PROFIL"
+                android:textColor="@android:color/white"
                 android:textSize="15sp"
+                android:textStyle="bold"
                 app:cornerRadius="16dp"
                 app:elevation="2dp" />
 
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

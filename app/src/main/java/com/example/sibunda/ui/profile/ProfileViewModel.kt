@@ -27,11 +27,15 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
     private val _alamatIbu = MutableLiveData<String>()
     val alamatIbu: LiveData<String> = _alamatIbu
 
+    private val _fotoProfile = MutableLiveData<String>()
+    val fotoProfile: LiveData<String> = _fotoProfile
+
     fun loadUserProfile() {
         _namaIbu.value = sharedPreferences.getString(Constants.KEY_NAMA, "Bunda")
         _nikIbu.value = sharedPreferences.getString(Constants.KEY_NIK, "Belum diisi")
         _usernameIbu.value = sharedPreferences.getString(Constants.KEY_USERNAME, "Belum login")
         _teleponIbu.value = sharedPreferences.getString(Constants.KEY_TELEPON, "Belum diisi")
         _alamatIbu.value = sharedPreferences.getString(Constants.KEY_ALAMAT, "Belum diisi")
+        _fotoProfile.value = sharedPreferences.getString(Constants.KEY_FOTO_PROFILE, "")
     }
 }

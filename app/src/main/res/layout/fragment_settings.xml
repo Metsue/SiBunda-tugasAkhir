@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootSettings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/soft_pink"
@@ -26,17 +27,17 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
+        android:fillViewport="true"
         android:paddingHorizontal="20dp"
         android:paddingBottom="110dp"
-        app:layout_constraintTop_toBottomOf="@id/tvHeaderSettings"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHeaderSettings">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- CARD USER -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardUserSettings"
                 android:layout_width="match_parent"
@@ -45,7 +46,8 @@
                 app:cardBackgroundColor="@android:color/white"
                 app:cardCornerRadius="26dp"
                 app:cardElevation="4dp"
-                app:strokeWidth="0dp">
+                app:strokeColor="#F3D3E0"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -55,21 +57,23 @@
                     android:padding="20dp">
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardPhotoSettings"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
                         app:cardBackgroundColor="#FFE5F1"
                         app:cardCornerRadius="36dp"
-                        app:cardElevation="0dp">
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/rose_pink"
+                        app:strokeWidth="1dp">
 
                         <ImageView
                             android:id="@+id/ivProfilePicture"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:contentDescription="Foto profil"
                             android:padding="18dp"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/ic_profile"
-                            app:tint="@color/rose_pink"
-                            android:contentDescription="Foto profil" />
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_profile" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -89,7 +93,7 @@
                             android:textColor="@android:color/black"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            tools:text="Ibu Nanda" />
+                            tools:text="Nanda" />
 
                         <TextView
                             android:id="@+id/tvSettingsEmail"
@@ -100,7 +104,17 @@
                             android:text="email@example.com"
                             android:textColor="#757575"
                             android:textSize="14sp"
-                            tools:text="nanda@gmail.com" />
+                            tools:text="indramanarap@gmail.com" />
+
+                        <TextView
+                            android:id="@+id/tvCurrentTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif"
+                            android:text="Tema aktif: Original / Cerah"
+                            android:textColor="#757575"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -108,14 +122,15 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- CARD MENU -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMenuSettings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardCornerRadius="26dp"
                 app:cardElevation="3dp"
-                app:strokeWidth="0dp">
+                app:strokeColor="#F3D3E0"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -131,9 +146,11 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         android:paddingHorizontal="20dp">
 
                         <TextView
+                            android:id="@+id/tvMenuProfile"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -143,6 +160,7 @@
                             android:textSize="15sp" />
 
                         <TextView
+                            android:id="@+id/tvArrowProfile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="›"
@@ -152,6 +170,7 @@
                     </LinearLayout>
 
                     <View
+                        android:id="@+id/lineProfile"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginHorizontal="20dp"
@@ -165,9 +184,11 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         android:paddingHorizontal="20dp">
 
                         <TextView
+                            android:id="@+id/tvMenuTheme"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -177,6 +198,7 @@
                             android:textSize="15sp" />
 
                         <TextView
+                            android:id="@+id/tvArrowTheme"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="›"
@@ -186,6 +208,7 @@
                     </LinearLayout>
 
                     <View
+                        android:id="@+id/lineTheme"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginHorizontal="20dp"
@@ -199,9 +222,11 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         android:paddingHorizontal="20dp">
 
                         <TextView
+                            android:id="@+id/tvMenuNotification"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -211,6 +236,7 @@
                             android:textSize="15sp" />
 
                         <TextView
+                            android:id="@+id/tvArrowNotification"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="›"
@@ -220,6 +246,7 @@
                     </LinearLayout>
 
                     <View
+                        android:id="@+id/lineNotification"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginHorizontal="20dp"
@@ -233,9 +260,11 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         android:paddingHorizontal="20dp">
 
                         <TextView
+                            android:id="@+id/tvMenuAbout"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -245,6 +274,7 @@
                             android:textSize="15sp" />
 
                         <TextView
+                            android:id="@+id/tvArrowAbout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="›"
@@ -257,7 +287,6 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- LOGOUT -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"

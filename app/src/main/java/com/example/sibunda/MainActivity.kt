@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.sibunda.core.utils.ThemeManager
 import com.example.sibunda.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,33 +17,69 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inisialisasi ViewBinding sesuai standar modern
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inisialisasi NavController untuk mengatur alur sitemap (Gambar 3.1)
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+
         navController = navHostFragment.navController
 
-        // Hubungkan Bottom Navigation dengan NavController (Home, Chat, Profile, Settings)
         binding.bottomNavigation.setupWithNavController(navController)
 
-        // Kontrol Visibilitas Navigasi Bawah
-        // Kita tidak ingin BottomNav muncul di Splash atau Login screen
+        applyGlobalTheme()
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.splashFragment, R.id.loginFragment, R.id.registerFragment -> {
+                R.id.splashFragment,
+                R.id.loginFragment,
+                R.id.registerFragment -> {
                     binding.bottomNavigation.visibility = View.GONE
                 }
+
                 else -> {
                     binding.bottomNavigation.visibility = View.VISIBLE
                 }
             }
+
+            binding.root.post {
+                applyGlobalTheme()
+                applyThemeToCurrentFragment()
+            }
         }
     }
 
-    // Memungkinkan tombol "Back" sistem mengikuti alur navigasi aplikasi
+    override fun onResume() {
+        super.onResume()
+
+        binding.root.post {
+            applyGlobalTheme()
+            applyThemeToCurrentFragment()
+        }
+    }
+
+    private fun applyGlobalTheme() {
+        ThemeManager.applyToActivity(
+            activity = this,
+            rootView = binding.main,
+            bottomNavigationView = binding.bottomNavigation
+        )
+    }
+
+    private fun applyThemeToCurrentFragment() {
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+
+        val currentFragment = navHostFragment
+            ?.childFragmentManager
+            ?.fragments
+            ?.firstOrNull()
+
+        val fragmentView = currentFragment?.view ?: return
+
+        ThemeManager.applyToScreen(this, fragmentView)
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }

@@ -35,16 +35,16 @@ class KonsultasiFragment : Fragment(R.layout.fragment_konsultasi) {
         val konsultasiStunting = KonsultasiItem(
             jenis = "Konsultasi Stunting",
             deskripsi = "Layanan konsultasi untuk memantau pertumbuhan anak, mengenali risiko stunting, dan memperoleh saran tindak lanjut.",
-            namaDokter = "dr. Nabila Rahmawati",
-            nomorWhatsapp = "6281234567890",
+            namaDokter = "dr. Muhammad Indra",
+            nomorWhatsapp = "6283137970669",
             jamLayanan = "Senin - Jumat, 09.00 - 15.00 WIB"
         )
 
         val konsultasiPolaMakan = KonsultasiItem(
             jenis = "Konsultasi Pola Makan",
             deskripsi = "Layanan konsultasi untuk pengaturan jadwal makan, variasi menu, serta pola pemberian makanan yang sesuai usia balita.",
-            namaDokter = "dr. Siti Azzahra Putri",
-            nomorWhatsapp = "6289876543210",
+            namaDokter = "dr. M. Rif'at Maulana",
+            nomorWhatsapp = "6282173180602",
             jamLayanan = "Senin - Sabtu, 08.30 - 14.30 WIB"
         )
 
@@ -70,7 +70,7 @@ class KonsultasiFragment : Fragment(R.layout.fragment_konsultasi) {
             putString("jam_layanan", item.jamLayanan)
         }
 
-        findNavController().navigate(R.id.kontakDokterFragment, bundle)
+        findNavController().navigate(R.id.action_konsultasi_to_kontak, bundle)
     }
 
     override fun onDestroyView() {

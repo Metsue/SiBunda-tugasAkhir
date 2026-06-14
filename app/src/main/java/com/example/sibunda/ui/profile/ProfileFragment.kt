@@ -1,10 +1,11 @@
 package com.example.sibunda.ui.profile
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.sibunda.R
 import com.example.sibunda.databinding.FragmentProfileBinding
 
@@ -22,11 +23,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         setupObservers()
 
         binding.btnEditProfile.setOnClickListener {
-            Toast.makeText(
-                requireContext(),
-                "Fitur edit profil dalam pengembangan",
-                Toast.LENGTH_SHORT
-            ).show()
+            findNavController().navigate(R.id.editProfileFragment)
         }
     }
 
@@ -54,6 +51,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         viewModel.alamatIbu.observe(viewLifecycleOwner) { alamat ->
             binding.tvProfileAddress.text = alamat
+        }
+
+        viewModel.fotoProfile.observe(viewLifecycleOwner) { foto ->
+            if (!foto.isNullOrEmpty()) {
+                binding.ivProfilePicture.setPadding(0, 0, 0, 0)
+                binding.ivProfilePicture.setImageURI(Uri.parse(foto))
+                binding.ivProfilePicture.clearColorFilter()
+            } else {
+                binding.ivProfilePicture.setImageResource(R.drawable.ic_profile)
+            }
         }
     }
 
